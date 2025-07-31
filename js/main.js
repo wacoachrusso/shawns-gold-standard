@@ -136,8 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 console.log('Quote submitted successfully:', data);
                 Toastify({
-                    text: "Your quote request has been submitted successfully!",
-                    duration: 5000,
+                    text: "Your quote request has been sent successfully!",
+                    duration: 3000,
                     close: true,
                     gravity: "top",
                     position: "right",
@@ -146,7 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     stopOnFocus: true,
                 }).showToast();
-                form.reset();
+                quoteForm.reset();
+                document.getElementById('image-preview-container').innerHTML = '';
+                setTimeout(() => { window.location.href = '/'; }, 3000);
             }
 
             submitButton.disabled = false;
@@ -193,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Contact form submitted successfully:', data);
                 Toastify({
                     text: "Your message has been sent successfully!",
-                    duration: 5000,
+                    duration: 3000,
                     close: true,
                     gravity: "top",
                     position: "right",
@@ -202,7 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     stopOnFocus: true,
                 }).showToast();
-                form.reset();
+                contactForm.reset();
+                setTimeout(() => { window.location.href = '/'; }, 3000);
             }
 
             submitButton.disabled = false;
