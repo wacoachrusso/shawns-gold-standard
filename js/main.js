@@ -241,6 +241,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle Drag and Drop for File Upload
     const dropZone = document.getElementById('drop-zone');
     const fileInput = document.getElementById('images');
+    const imagePreviewContainer = document.getElementById('image-preview-container');
+    
+    // Function to generate image previews
+    const updateImagePreviews = () => {
+        if (!fileInput || !fileInput.files || !imagePreviewContainer) return;
+        
+        imagePreviewContainer.innerHTML = ''; // Clear existing previews
+        
+        Array.from(fileInput.files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.createElement('div');
+                preview.classList.add('image-preview');
+                
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = file.name;
+                
+                const name = document.createElement('p');
+                name.textContent = file.name;
+                
+                preview.appendChild(img);
+                preview.appendChild(name);
+                imagePreviewContainer.appendChild(preview);
+            };
+            reader.readAsDataURL(file);
+        });
+    };
+    
+    // Add change event listener to file input
+    if (fileInput) {
+        fileInput.addEventListener('change', updateImagePreviews);
+    }
 
     if (dropZone) {
         dropZone.addEventListener('click', () => fileInput.click());

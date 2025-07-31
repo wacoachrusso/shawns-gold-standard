@@ -347,7 +347,7 @@ header.scrolled {
 }
 
 .testimonial-card p {
-    color: #000; /* Changed to black for maximum contrast */
+    color: #000000 !important; /* Pure black with !important to override any other styles */
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 1.5rem;
@@ -588,8 +588,8 @@ footer {
 }
 
 .drop-zone.dragover {
-    background-color: rgba(212, 175, 55, 0.1);
     border-color: var(--gold-accent);
+    background-color: rgba(200, 200, 200, 0.1);
 }
 
 .drop-zone-input {
@@ -607,6 +607,34 @@ footer {
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1rem;
+}
+
+.image-preview {
+    position: relative;
+    width: 100px;
+    text-align: center;
+    border: 1px solid var(--light-border);
+    border-radius: 5px;
+    padding: 5px;
+    background: white;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+    max-height: 80px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+
+.image-preview p {
+    font-size: 0.8rem;
+    margin: 5px 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #000000; /* Ensuring text is black */
 }
 
 .trust-text {
