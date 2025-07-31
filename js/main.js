@@ -1,15 +1,35 @@
 // Shawn's Gold Standard - Main JavaScript File
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Auto-format phone number
+    const formatPhoneNumber = (input) => {
+        // Strip all non-numeric characters
+        let value = input.value.replace(/\D/g, '');
+        // Apply formatting: 123-456-7890
+        if (value.length > 3 && value.length <= 6) {
+            value = `${value.slice(0, 3)}-${value.slice(3)}`;
+        } else if (value.length > 6) {
+            value = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6, 10)}`;
+        }
+        input.value = value;
+    };
+
+    const phoneInputs = document.querySelectorAll('input[type="tel"]');
+    phoneInputs.forEach(input => {
+        input.addEventListener('input', () => formatPhoneNumber(input));
+    });
+
     // Shrink header on scroll
     const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     // Ensure Supabase is available
     if (typeof supabase === 'undefined') {
@@ -17,17 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const {
-        createClient
-    } = supabase;
+    const { createClient } = supabase;
     const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
     console.log("Supabase client initialized.");
 
     // Handle Hamburger Menu Toggle
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const navLinks = document.querySelector('.nav-links');
-
     if (hamburgerMenu && navLinks) {
         hamburgerMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -145,10 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         background: "linear-gradient(to right, #00b09b, #96c93d)",
                     },
                     stopOnFocus: true,
+                    callback: function() {
+                        window.location.href = "/";
+                    }
                 }).showToast();
                 quoteForm.reset();
                 document.getElementById('image-preview-container').innerHTML = '';
-                setTimeout(() => { window.location.href = '/'; }, 3000);
             }
 
             submitButton.disabled = false;
@@ -203,9 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         background: "linear-gradient(to right, #00b09b, #96c93d)",
                     },
                     stopOnFocus: true,
+                    callback: function() {
+                        window.location.href = "/";
+                    }
                 }).showToast();
                 contactForm.reset();
-                setTimeout(() => { window.location.href = '/'; }, 3000);
             }
 
             submitButton.disabled = false;
