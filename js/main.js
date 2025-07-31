@@ -151,6 +151,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).showToast();
             } else {
                 console.log('Quote submitted successfully:', data);
+
+                // 3. Trigger email notification via serverless function
+                try {
+                    await fetch('/.netlify/functions/send-quote-email', {
+                        method: 'POST',
+                        body: JSON.stringify(submission)
+                    });
+                } catch (emailError) {
+                    console.error('Failed to send email notification:', emailError);
+                    // Don't show an error to the user, just log it for debugging
+                }
+
                 Toastify({
                     text: "Your quote request has been sent successfully!",
                     duration: 3000,
