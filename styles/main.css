@@ -323,61 +323,83 @@ header.scrolled {
     line-height: 1.6;
 }
 
-/* Testimonials Section */
-.testimonial-slider-container {
-    position: relative;
-    max-width: 800px; /* Adjust as needed */
-    margin: 0 auto;
-    overflow: hidden;
+/* Testimonial Section */
+.testimonials-section {
+    padding: 4rem 1rem;
+    background-color: #f8f8f8;
+    margin: 2rem 0;
 }
 
-.testimonial-grid {
+.testimonials-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--dark-blue);
+}
+
+.testimonials-container {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.testimonial-card {
-    flex: 0 0 100%;
-    box-sizing: border-box;
-    background-color: #f4f4f4;
+.testimonial-box {
+    flex: 1 1 300px;
+    max-width: 380px;
+    margin-bottom: 2rem;
+}
+
+.testimonial-content {
+    background-color: white;
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: relative;
     border-left: 5px solid var(--gold-accent);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.testimonial-card p {
-    color: #000000 !important; /* Pure black with !important to override any other styles */
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-}
-
-/* Removed duplicate rule that was causing gray text */
-
-.testimonial-card blockquote {
-    font-style: italic;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-    color: #e0e0e0;
-}
-
-.testimonial-card cite {
-    font-weight: bold;
+.quote-icon {
+    font-size: 3rem;
     color: var(--gold-accent);
-    display: block;
-    text-align: right;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #000000;
+    font-weight: 400;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+}
+
+.testimonial-author strong {
+    color: var(--dark-blue);
+    font-weight: 600;
+}
+
+.testimonial-author span {
+    color: #666;
+    font-size: 0.9rem;
 }
 
 .testimonial-cta {
     text-align: center;
-    font-size: 1.1rem;
+    margin-top: 2rem;
 }
 
 .testimonial-cta a {
     color: var(--gold-accent);
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: underline;
 }
 
@@ -566,26 +588,17 @@ footer {
 }
 
 /* Quote Form */
-.quote-form {
-    background-color: var(--navy-light);
-    padding: 2rem;
-    border-radius: 8px;
+.upload-container {
+    margin: 15px 0;
 }
 
-.drop-zone {
-    position: relative;
-    border: 2px dashed #ccc;
-    border-radius: 5px;
-    padding: 2rem;
-    text-align: center;
-    cursor: pointer;
-    color: #ccc;
-    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-}
-
-.drop-zone.dragover {
-    border-color: var(--gold-accent);
-    background-color: rgba(200, 200, 200, 0.1);
+.file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
 
 .upload-button-container {
@@ -596,13 +609,14 @@ footer {
 }
 
 .btn-secondary {
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
     background-color: var(--dark-blue);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s ease;
+    font-weight: 600;
 }
 
 .btn-secondary:hover {
@@ -613,16 +627,7 @@ footer {
 .file-count {
     font-size: 0.9rem;
     color: var(--dark-text);
-}
-
-.drop-zone-input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
+    font-weight: 600;
 }
 
 #image-preview-container {

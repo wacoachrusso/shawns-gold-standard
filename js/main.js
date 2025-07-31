@@ -238,8 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle Drag and Drop for File Upload
-    const dropZone = document.getElementById('drop-zone');
+    // Simple file upload handler
     const fileInput = document.getElementById('images');
     const imagePreviewContainer = document.getElementById('image-preview-container');
     const selectFilesBtn = document.getElementById('select-files-btn');
@@ -300,27 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add change event listener to file input
     if (fileInput) {
         fileInput.addEventListener('change', updateImagePreviews);
-    }
-
-    if (dropZone) {
-        dropZone.addEventListener('click', () => fileInput.click());
-
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('dragover');
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            fileInput.files = e.dataTransfer.files;
-            // Manually trigger the change event to update the UI (e.g., image previews)
-            fileInput.dispatchEvent(new Event('change', { bubbles: true }));
-        });
     }
 
     // Handle Contact Form Submission
