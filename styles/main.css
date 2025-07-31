@@ -353,11 +353,7 @@ header.scrolled {
     margin-bottom: 1.5rem;
 }
 
-.testimonial-card p {
-    color: #e0e0e0; /* Lighter text for readability */
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
+/* Removed duplicate rule that was causing gray text */
 
 .testimonial-card blockquote {
     font-style: italic;
@@ -590,6 +586,33 @@ footer {
 .drop-zone.dragover {
     border-color: var(--gold-accent);
     background-color: rgba(200, 200, 200, 0.1);
+}
+
+.upload-button-container {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    gap: 1rem;
+}
+
+.btn-secondary {
+    padding: 0.5rem 1rem;
+    background-color: var(--dark-blue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--gold-accent);
+    transform: translateY(-2px);
+}
+
+.file-count {
+    font-size: 0.9rem;
+    color: var(--dark-text);
 }
 
 .drop-zone-input {

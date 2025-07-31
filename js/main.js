@@ -242,6 +242,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropZone = document.getElementById('drop-zone');
     const fileInput = document.getElementById('images');
     const imagePreviewContainer = document.getElementById('image-preview-container');
+    const selectFilesBtn = document.getElementById('select-files-btn');
+    const fileCountDisplay = document.querySelector('.file-count');
+    
+    // Function to update file count display
+    const updateFileCountDisplay = () => {
+        if (!fileInput || !fileCountDisplay) return;
+        
+        const count = fileInput.files.length;
+        if (count === 0) {
+            fileCountDisplay.textContent = 'No files selected';
+        } else if (count === 1) {
+            fileCountDisplay.textContent = '1 file selected';
+        } else {
+            fileCountDisplay.textContent = `${count} files selected`;
+        }
+    };
     
     // Function to generate image previews
     const updateImagePreviews = () => {
@@ -249,6 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         imagePreviewContainer.innerHTML = ''; // Clear existing previews
         
+        // Update file count first
+        updateFileCountDisplay();
+        
+        // Generate previews
         Array.from(fileInput.files).forEach(file => {
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -269,6 +289,13 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.readAsDataURL(file);
         });
     };
+    
+    // Add event listener to select files button
+    if (selectFilesBtn) {
+        selectFilesBtn.addEventListener('click', () => {
+            if (fileInput) fileInput.click();
+        });
+    }
     
     // Add change event listener to file input
     if (fileInput) {
