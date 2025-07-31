@@ -339,11 +339,18 @@ header.scrolled {
 .testimonial-card {
     flex: 0 0 100%;
     box-sizing: border-box;
-    background-color: var(--navy-light);
+    background-color: #f4f4f4;
     padding: 2rem;
     border-radius: 8px;
     border-left: 5px solid var(--gold-accent);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card p {
+    color: var(--dark-text);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
 }
 
 .testimonial-card p {
@@ -551,6 +558,7 @@ footer {
 .why-choose-us h2 {
     text-align: center;
     margin-bottom: 3rem;
+    color: var(--light-text);
 }
 
 .why-choose-us .feature-icon {
