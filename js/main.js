@@ -258,7 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             dropZone.classList.remove('dragover');
             fileInput.files = e.dataTransfer.files;
-            // You might want to trigger a change event or update a preview here
+            // Manually trigger the change event to update the UI (e.g., image previews)
+            fileInput.dispatchEvent(new Event('change', { bubbles: true }));
         });
     }
 

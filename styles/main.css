@@ -347,7 +347,7 @@ header.scrolled {
 }
 
 .testimonial-card p {
-    color: var(--dark-text);
+    color: #000; /* Changed to black for maximum contrast */
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 1.5rem;
@@ -558,7 +558,7 @@ footer {
 .why-choose-us h2 {
     text-align: center;
     margin-bottom: 3rem;
-    color: var(--light-text);
+    color: var(--gold-accent); /* Changed to gold for high contrast */
 }
 
 .why-choose-us .feature-icon {
