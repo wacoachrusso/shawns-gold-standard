@@ -47,8 +47,12 @@ nav {
 }
 
 nav .logo img {
-    height: 85px; /* Significantly increased logo size */
-    transition: all 0.3s ease;
+    height: 100px; /* Larger initial logo size */
+    transition: height 0.4s ease;
+}
+
+header.scrolled nav .logo img {
+    height: 60px; /* Smaller logo on scroll */
 }
 
 nav .logo img:hover {
@@ -234,10 +238,26 @@ section h2 {
     line-height: 1.6;
 }
 
-/* Our Process Section */
-.our-process h2 {
-    color: var(--dark-text);
+header {
+    background-color: var(--navy-bg);
+    padding: 1.5rem 5%; /* Increased initial padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: padding 0.4s ease, background-color 0.4s ease;
 }
+
+header.scrolled {
+    padding: 0.5rem 5%; /* Reduced padding on scroll */
+    background-color: rgba(10, 25, 47, 0.85); /* Add a semi-transparent effect on scroll */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Our Process Section */
 
 .process-steps {
     display: flex;

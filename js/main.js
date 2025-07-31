@@ -1,6 +1,16 @@
 // Shawn's Gold Standard - Main JavaScript File
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Shrink header on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
     // Ensure Supabase is available
     if (typeof supabase === 'undefined') {
         console.error('Supabase client is not loaded.');
@@ -76,8 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             throw new Error(`Image upload failed: ${response.statusText}`);
                         }
                     } catch (error) {
-                        console.error('Error uploading image:', error);
-                        alert('There was an error uploading your images. Please try again.');
+                        console.error('Image upload failed:', error);
+                        Toastify({
+                            text: "Error uploading images: " + error.message,
+                            duration: 5000,
+                            close: true,
+                            gravity: "top",
+                            position: "right",
+                            style: {
+                                background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                            },
+                            stopOnFocus: true,
+                        }).showToast();
                         submitButton.disabled = false;
                         submitButton.textContent = 'Submit for Quote';
                         return; // Stop the submission process
