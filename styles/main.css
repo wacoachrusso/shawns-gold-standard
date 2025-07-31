@@ -346,6 +346,12 @@ header.scrolled {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.testimonial-card p {
+    color: #e0e0e0; /* Lighter text for readability */
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
 .testimonial-card blockquote {
     font-style: italic;
     font-size: 1.1rem;
@@ -788,6 +794,14 @@ footer {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+    .process-steps {
+        flex-direction: column;
+    }
+
+    .hero {
+        padding: 6rem 5%;
+    }
+
     .about-content {
         flex-direction: column;
         align-items: center;
