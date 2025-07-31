@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Get a Quote - Shawn’s Gold Standard</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" alt="Shawn's Gold Standard Logo">
+                </a>
+                <p>Set the Gold Standard. Get the Gold Payout.</p>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/pages/quote.html">Get a Quote</a></li>
+                    <li><a href="/pages/how-it-works.html">How It Works</a></li>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <button class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <h1>Get a Free, No-Obligation Quote</h1>
+        <p>Fill out the form below and upload photos of your items. We'll get back to you with a top-dollar offer quickly.</p>
+        
+        <form id="quote-form" class="quote-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="metal-type">Metal Type</label>
+                <select id="metal-type" name="metal-type" required>
+                    <option value="">Select a type...</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Coins">Coins</option>
+                    <option value="Scrap">Scrap Metal</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="description">Description (Optional)</label>
+                <textarea id="description" name="description" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="images">Upload Images (Up to 5)</label>
+                <input type="file" id="images" name="images" multiple accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit for Quote</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Shawn's Gold Standard. All Rights Reserved.</p>
+        <p>Disclosure: Shawn’s Gold Standard does not provide investment advice or appraisals.</p>
+        <div class="footer-links">
+            <a href="/pages/privacy.html">Privacy Policy</a>
+            <a href="/pages/terms.html">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
