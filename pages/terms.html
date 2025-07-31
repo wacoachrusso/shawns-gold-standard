@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Shawn’s Gold Standard</title>
+    <title>Terms of Service | Shawn’s Gold Standard</title>
+    <meta name="robots" content="noindex, follow">
+        <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png">
+
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <header>
@@ -57,5 +68,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/config.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

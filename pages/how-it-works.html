@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How It Works - Shawn’s Gold Standard</title>
+    <title>How to Sell Your Gold | 4 Easy Steps | Pittsburgh</title>
+    <meta name="description" content="Discover how easy it is to sell your gold in Pittsburgh with our simple 4-step process. Get a quote, ship or meet, get paid fast. Safe, secure, and transparent.">
+        <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png">
+
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <header>
@@ -33,27 +44,35 @@
     </header>
 
     <main class="page-main">
-        <h1>Our Simple 4-Step Process</h1>
+        <h1>Our Simple, Secure 4-Step Process</h1>
         <section class="how-it-works-steps">
             <div class="step-item">
-                <div class="step-icon">📷</div>
-                <h3>Step 1: Snap a Photo</h3>
-                <p>Take clear pictures of your gold, silver, or jewelry from a few different angles.</p>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                </div>
+                <h3>Step 1: Submit Your Quote Request</h3>
+                <p>Use our simple online form to tell us about your items. Upload a few clear photos—no need for a professional camera, your phone is perfect.</p>
             </div>
             <div class="step-item">
-                <div class="step-icon">✉️</div>
-                <h3>Step 2: Submit It Online</h3>
-                <p>Use our secure form to send us the photos and a brief description of your items.</p>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                </div>
+                <h3>Step 2: Receive Your Offer</h3>
+                <p>Shawn will personally assess your items and send you a transparent, top-dollar offer based on real-time market values. No obligations, no pressure.</p>
             </div>
             <div class="step-item">
-                <div class="step-icon">💬</div>
-                <h3>Step 3: Receive a Quote</h3>
-                <p>Shawn will personally review your submission and send you a fair, top-dollar quote, usually within the hour.</p>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                </div>
+                <h3>Step 3: Arrange Secure Handover</h3>
+                <p>If you accept the offer, we make it easy. Choose a secure, insured, prepaid shipping label on us, or schedule a safe, public meetup in the Pittsburgh area.</p>
             </div>
             <div class="step-item">
-                <div class="step-icon">💵</div>
-                <h3>Step 4: Get Paid</h3>
-                <p>Choose to meet in a safe, public place in Pittsburgh or use our secure, insured shipping. Get paid instantly via Cash, Zelle, Venmo, or Check.</p>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 6h20M2 18h20"></path></svg>
+                </div>
+                <h3>Step 4: Get Paid Instantly</h3>
+                <p>As soon as your items are verified, we send your payment immediately through your preferred method—Cash, Zelle, Venmo, or Check.</p>
             </div>
         </section>
     </main>
@@ -70,5 +89,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/config.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Shawn - Shawn’s Gold Standard</title>
+    <title>About Shawn Logan | Your Trusted Pittsburgh Gold Buyer</title>
+    <meta name="description" content="Learn about Shawn Logan, an experienced and trusted gold buyer in Pittsburgh. Get a fair, transparent, and professional evaluation for your precious metals.">
+        <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png">
+
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <header>
@@ -33,14 +44,22 @@
     </header>
 
     <main class="page-main about-section">
+        <h1>About Shawn</h1>
         <div class="about-content">
-            <img src="/assets/shawn-logan-portrait.jpg" alt="Portrait of Shawn Logan" class="about-portrait">
+            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754050854/shawn-logan-portrait_lq5zma.jpg" alt="Portrait of Shawn Logan" class="about-portrait">
             <div class="about-text">
-                <h1>Meet Shawn Logan: Your Trusted Pittsburgh Gold Buyer</h1>
+                <h2>Your Trusted Pittsburgh Gold Buyer</h2>
                 <p>Shawn Logan brings years of experience from running a successful Pittsburgh pawn shop. He’s helped hundreds of customers sell their valuables safely and get paid fairly. No middlemen, just expert evaluations and fast payouts.</p>
                 <p>Tired of the lowball offers and impersonal service of typical pawn shops, Shawn decided to create a better way for people to sell their precious metals. At Shawn's Gold Standard, you deal directly with the expert. This means you get a more accurate evaluation, a higher payout, and a private, professional experience every time.</p>
                 <p>Whether you're selling old jewelry, inherited coins, or scrap gold, Shawn is committed to making the process transparent, simple, and rewarding for you.</p>
             </div>
+        </div>
+
+        <div class="about-quote">
+            <blockquote>
+                “My goal is to treat every customer with respect. I built this business on fairness and transparency, and that’s a promise I stand by.”
+            </blockquote>
+            <cite>– Shawn Logan</cite>
         </div>
     </main>
 
@@ -56,5 +75,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/config.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

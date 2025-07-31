@@ -1,2 +1,25 @@
+# Netlify configuration file
+
+# Specifies the directory for serverless functions.
 [functions]
   directory = "netlify/functions/"
+
+# Build settings for the site.
+[build]
+  # The directory to publish, relative to the base directory.
+  # For a static site in the root, this is usually just "/".
+  publish = "/"
+
+# Asset optimization settings.
+# These settings will be applied during the build process on Netlify.
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.images]
+  compress = true
+

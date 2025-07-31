@@ -1,0 +1,21 @@
+{
+  "name": "Shawn's Gold Standard",
+  "short_name": "SGS",
+  "description": "Sell gold, silver, coins, and jewelry in Pittsburgh. Trusted buyer. Fast quotes. Top payouts.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1a2a40",
+  "theme_color": "#D4AF37",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

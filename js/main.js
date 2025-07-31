@@ -47,7 +47,59 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburgerMenu && navLinks) {
         hamburgerMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            hamburgerMenu.classList.toggle('active');
         });
+    }
+
+    // Testimonial Slider
+    const sliderContainer = document.querySelector('.testimonial-grid');
+    const slides = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (sliderContainer && slides.length > 0) {
+        let currentIndex = 0;
+        let slideInterval;
+
+        const showSlide = (index) => {
+            sliderContainer.style.transform = `translateX(-${index * 100}%)`;
+        };
+
+        const nextSlide = () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        };
+
+        const prevSlide = () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        };
+
+        const startSlider = () => {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        };
+
+        const stopSlider = () => {
+            clearInterval(slideInterval);
+        };
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopSlider();
+            startSlider(); // Restart timer on manual navigation
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopSlider();
+            startSlider(); // Restart timer on manual navigation
+        });
+        
+        // Pause slider on hover
+        document.querySelector('.testimonial-slider-container').addEventListener('mouseenter', stopSlider);
+        document.querySelector('.testimonial-slider-container').addEventListener('mouseleave', startSlider);
+
+        startSlider();
     }
 
     // Scroll Animations
@@ -164,8 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 Toastify({
-                    text: "Your quote request has been sent successfully!",
-                    duration: 3000,
+                    text: "Thanks for reaching out! Shawn will contact you within 24 hours.",
+                    duration: 4000,
                     close: true,
                     gravity: "top",
                     position: "right",
@@ -183,6 +235,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
             submitButton.disabled = false;
             submitButton.textContent = 'Submit for Quote';
+        });
+    }
+
+    // Handle Drag and Drop for File Upload
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('images');
+
+    if (dropZone) {
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            // You might want to trigger a change event or update a preview here
         });
     }
 
