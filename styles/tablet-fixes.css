@@ -1,0 +1,146 @@
+/* Tablet-specific fixes */
+
+/* Prevent content overlap and ensure proper spacing */
+@media (max-width: 992px) and (min-width: 768px) {
+    /* Improve general spacing */
+    body {
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+    
+    /* Adjust container padding */
+    .container {
+        max-width: 95% !important;
+        padding: 0 20px !important;
+    }
+    
+    /* Improve section spacing */
+    section {
+        margin: 0 !important;
+        padding: 50px 0 !important;
+    }
+    
+    /* Fix hero section for tablet */
+    .hero-content {
+        flex-direction: column !important;
+        padding-top: 100px !important;
+        height: auto !important;
+        min-height: 80vh !important;
+    }
+    
+    .hero-text, .hero-image {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 20px 0 !important;
+    }
+    
+    /* Fix benefits section */
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px !important;
+    }
+    
+    /* Fix process section */
+    .process-steps {
+        flex-direction: column !important;
+    }
+    
+    .step {
+        width: 100% !important;
+        margin-bottom: 40px !important;
+    }
+    
+    /* Fix testimonials section */
+    .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* Fix CTA section */
+    .cta-container {
+        padding: 40px 20px !important;
+    }
+    
+    /* Fix About page */
+    .about-content {
+        flex-direction: column !important;
+    }
+    
+    .about-text, .about-image {
+        width: 100% !important;
+    }
+    
+    /* Navigation adjustments */
+    .navbar {
+        padding: 10px 20px !important;
+    }
+    
+    /* Improve footer on tablet */
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* Fix quote form layout */
+    .quote-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Fix services page */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Ensure hamburger menu works properly */
+@media (max-width: 992px) {
+    /* Force hamburger to be visible and functional */
+    .hamburger {
+        display: block !important;
+        position: absolute !important;
+        right: 20px !important;
+        top: 25px !important;
+        background: transparent !important;
+        border: none !important;
+        z-index: 1000 !important;
+        cursor: pointer !important;
+    }
+    
+    /* Strong styling for spans to ensure visibility */
+    .hamburger span {
+        display: block !important;
+        width: 25px !important;
+        height: 3px !important;
+        margin: 5px 0 !important;
+        background-color: #fff !important;
+        border-radius: 2px !important;
+    }
+    
+    /* Make nav links hidden by default */
+    .nav-links {
+        position: absolute !important;
+        background-color: var(--navy-bg) !important;
+        width: 100% !important;
+        top: 80px !important;
+        left: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: none !important;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2) !important;
+    }
+    
+    /* Style for active state */
+    .nav-links.active {
+        display: block !important;
+    }
+    
+    /* Force vertical menu */
+    .nav-links ul {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 20px 0 !important;
+        margin: 0 !important;
+    }
+    
+    .nav-links li {
+        margin: 10px 0 !important;
+        text-align: center !important;
+    }
+}

@@ -1,0 +1,134 @@
+/* Accessibility and Readability Improvements */
+
+/* Improved text contrast for better readability */
+body {
+    color: #333; /* Darker default text color */
+}
+
+/* Ensure Why Choose Us section text is readable */
+.why-choose-us-section {
+    color: #333333; /* Dark text color */
+}
+
+.why-choose-us-section p,
+.why-choose-us-section li {
+    color: #333333; /* Ensure paragraph text and list items are dark */
+    font-weight: 500; /* Slightly bolder text */
+}
+
+.feature-content h3 {
+    color: #1a1a1a; /* Very dark text for headings */
+    font-weight: 600;
+}
+
+/* Improve contrast for light text on dark backgrounds */
+.navy-bg, .dark-bg, .hero, .cta-section, .final-cta-section, .footer {
+    color: #ffffff; /* Pure white text on dark backgrounds */
+}
+
+.light-text {
+    color: #ffffff !important; /* Ensure light text is white, not light gray */
+}
+
+/* Improve contrast for section subtitles and light gray text */
+.section-subtitle, .light-gray, .text-muted, .footer-description {
+    color: #d0d0d0 !important; /* Lighter gray that meets WCAG AA standards on dark backgrounds */
+}
+
+/* For dark backgrounds */
+.navy-bg .section-subtitle, 
+.dark-bg .section-subtitle,
+.hero .hero-subtitle,
+.cta-section .cta-tagline,
+.final-cta-section .cta-tagline,
+.footer .footer-description,
+.nav-links .tagline {
+    color: #e0e0e0 !important; /* Even lighter gray for better contrast */
+}
+
+/* Improve contrast for gold accents on dark backgrounds */
+.gold-accent, .btn-gold, .footer-nav-group h4, .feature-icon {
+    color: #ddb035 !important; /* Brighter gold that meets contrast requirements */
+}
+
+/* Adjust link colors for better contrast */
+a {
+    color: #0056b3; /* Darker blue for better contrast */
+}
+
+a:hover {
+    color: #003d7a; /* Even darker on hover */
+}
+
+/* Dark backgrounds get brighter links */
+.navy-bg a, .dark-bg a, .footer a {
+    color: #ddb035; /* Gold color for links on dark backgrounds */
+}
+
+.navy-bg a:hover, .dark-bg a:hover, .footer a:hover {
+    color: #f0c04c; /* Brighter gold on hover */
+}
+
+/* Ensure buttons have enough contrast */
+.btn-primary {
+    background-color: #ddb035; /* Brighter gold */
+    color: #121212; /* Near-black text */
+    font-weight: 600; /* Make text slightly bolder */
+}
+
+.btn-outline {
+    border: 2px solid #ddb035; /* Thicker border */
+    color: #ddb035; /* Brighter gold */
+}
+
+.btn-outline:hover {
+    background-color: #ddb035;
+    color: #121212; /* Near-black text */
+}
+
+/* Improve contrast for testimonial text */
+.testimonial-text {
+    color: #333; /* Darker text */
+}
+
+.testimonial-author {
+    color: #222; /* Even darker for author name */
+}
+
+.testimonial-role {
+    color: #555; /* Darker gray that still provides visual hierarchy */
+}
+
+/* Improve feature text contrast */
+.feature-text, .stat-label, .process-text {
+    color: #333; /* Darker text */
+}
+
+/* Footer improvements */
+.footer-nav-list a {
+    color: #e0e0e0; /* Lighter text for better contrast */
+}
+
+.footer-contact li {
+    color: #e0e0e0; /* Lighter text for better contrast */
+}
+
+.copyright, .footer-legal p {
+    color: #d0d0d0; /* Lighter gray text */
+}
+
+/* Form fields - ensure text is visible */
+input, textarea, select {
+    color: #333; /* Dark text */
+    background-color: #ffffff; /* White background */
+}
+
+::placeholder {
+    color: #777; /* Darker placeholder text */
+}
+
+/* Focus states for accessibility */
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
+    outline: 3px solid #ddb035; /* Gold outline for focus */
+    outline-offset: 2px;
+}

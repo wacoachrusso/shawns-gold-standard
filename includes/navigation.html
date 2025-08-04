@@ -1,0 +1,64 @@
+<!-- Standard Navigation Bar -->
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/index.html">
+                <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" alt="Shawn's Gold Standard Logo">
+            </a>
+            <p class="tagline">Pittsburgh's Trusted Gold Buyer</p>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <ul>
+                <li><a href="/index.html" id="nav-home">Home</a></li>
+                <li><a href="/pages/services.html" id="nav-services">Services</a></li>
+                <li><a href="/pages/how-it-works.html" id="nav-how-it-works">How It Works</a></li>
+                <li><a href="/pages/about.html" id="nav-about">About Shawn</a></li>
+                <li><a href="/pages/testimonials.html" id="nav-testimonials">Testimonials</a></li>
+                <li><a href="/pages/gallery.html" id="nav-gallery">Gallery</a></li>
+                <li><a href="/pages/contact.html" id="nav-contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-actions">
+            <a href="/pages/quote.html" class="btn btn-primary">Get a Quote</a>
+            <button class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<!-- JavaScript to highlight current page in navigation -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get current page path
+        const path = window.location.pathname;
+        
+        // Default to home
+        let currentPage = 'nav-home';
+        
+        // Determine which nav item to highlight
+        if (path.includes('/pages/services.html')) {
+            currentPage = 'nav-services';
+        } else if (path.includes('/pages/how-it-works.html')) {
+            currentPage = 'nav-how-it-works';
+        } else if (path.includes('/pages/about.html')) {
+            currentPage = 'nav-about';
+        } else if (path.includes('/pages/testimonials.html')) {
+            currentPage = 'nav-testimonials';
+        } else if (path.includes('/pages/gallery.html')) {
+            currentPage = 'nav-gallery';
+        } else if (path.includes('/pages/contact.html')) {
+            currentPage = 'nav-contact';
+        } else if (path.includes('/pages/quote.html')) {
+            currentPage = 'nav-quote';
+        }
+        
+        // Add active class to current page nav item
+        const currentNavItem = document.getElementById(currentPage);
+        if (currentNavItem) {
+            currentNavItem.classList.add('active');
+        }
+    });
+</script>

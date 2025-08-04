@@ -1,0 +1,220 @@
+/* Comprehensive Mobile & Tablet Responsive Fixes */
+
+/* Prevent horizontal scrolling */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Global Spacing Fixes */
+@media (max-width: 991px) {
+    /* General section spacing */
+    section {
+        padding: 3.5rem 0; /* Reduced padding but still maintains good separation */
+    }
+    
+    /* Container padding */
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    /* Vertical spacing between elements */
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    /* Card and feature spacing */
+    .card, .feature-box {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Text spacing */
+    p, .feature-text, .stat-text {
+        margin-bottom: 1.25rem;
+    }
+    
+    /* Grid items and flex containers */
+    .grid-container, .flex-container {
+        gap: 1.5rem;
+    }
+}
+
+/* Tablet-specific Fixes (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Adjust feature grids to 2 columns on tablets */
+    .features-grid, .services-grid, .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    /* Process steps spacing */
+    .process-steps {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    .process-step {
+        flex-basis: calc(50% - 2rem);
+    }
+    
+    /* Testimonial grid */
+    .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Stats spacing */
+    .stats-row {
+        flex-wrap: wrap;
+    }
+    
+    .stat-item {
+        flex-basis: calc(50% - 1rem);
+        margin-bottom: 2rem;
+    }
+}
+
+/* Mobile-specific Fixes (under 768px) */
+@media (max-width: 767px) {
+    /* Increase section padding for better separation */
+    section {
+        padding: 3rem 0;
+    }
+    
+    /* Increased container side padding */
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    
+    /* Single column layouts */
+    .features-grid, 
+    .services-grid, 
+    .why-choose-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* Process steps full width */
+    .process-steps {
+        flex-direction: column;
+        gap: 3rem; /* Increased gap for better separation */
+    }
+    
+    /* Process step connectors */
+    .process-step::after {
+        display: none; /* Remove horizontal connectors on mobile */
+    }
+    
+    /* Hero section adjustments */
+    .hero {
+        padding: 6rem 0 3rem; /* Increased top padding to account for fixed navbar */
+        text-align: center;
+    }
+    
+    .hero-content {
+        margin: 0 auto;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    /* CTA button stacking */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    .btn-lg {
+        padding: 0.9rem 1.5rem;
+    }
+    
+    /* Headers */
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    /* Testimonial card padding */
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+    
+    /* Quote form */
+    .quote-form-panel {
+        padding: 1.5rem;
+    }
+}
+
+/* Small Mobile Fixes (under 480px) */
+@media (max-width: 479px) {
+    /* Further reduce padding */
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    /* Smaller headers */
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    /* Button full width */
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Smaller icon sizes */
+    .feature-icon i, 
+    .service-icon i {
+        font-size: 1.5rem;
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+/* Font size adjustments for better readability on mobile */
+@media (max-width: 767px) {
+    body {
+        font-size: 16px;
+    }
+    
+    p, li, .feature-text, .testimonial-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* Fix navigation spacing on mobile */
+@media (max-width: 767px) {
+    .nav-links ul li {
+        margin: 0.75rem 0;
+    }
+    
+    .logo img {
+        max-width: 140px;
+    }
+    
+    .tagline {
+        font-size: 0.8rem;
+    }
+}

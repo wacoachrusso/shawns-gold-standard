@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | Shawn's Gold Standard | Pittsburgh Gold Buyer</title>
+    <meta name="description" content="View our gallery of gold, silver, coins, jewelry and other precious metals we've purchased. Get a visual idea of what items we buy at Shawn's Gold Standard.">
+    
+    <!-- SEO / Social Meta Tags -->
+    <meta property="og:title" content="Photo Gallery | Shawn's Gold Standard | Pittsburgh Gold Buyer">
+    <meta property="og:description" content="View our gallery of gold, silver, coins, jewelry and other precious metals we've purchased. Get a visual idea of what items we buy at Shawn's Gold Standard.">
+    <meta property="og:image" content="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg">
+    <meta property="og:url" content="https://shawnsgoldstandard.com/pages/gallery.html">
+    <meta property="og:site_name" content="Shawn's Gold Standard">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Photo Gallery | Shawn's Gold Standard | Pittsburgh Gold Buyer">
+    <meta name="twitter:description" content="View our gallery of gold, silver, coins, jewelry and other precious metals we've purchased. Get a visual idea of what items we buy at Shawn's Gold Standard.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lightbox CSS for the gallery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery-bundle.min.css">
+    
+    <link rel="stylesheet" href="/styles/main.css?v=1.2">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <style>
+        /* Gallery-specific styles */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            aspect-ratio: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover {
+            background: #e0e0e0;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .gallery-tab {
+            padding: 12px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-tab:after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-tab.active {
+            color: var(--primary-color);
+        }
+        
+        .gallery-tab.active:after {
+            transform: scaleX(1);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+    
+    <!-- Navigation loader script -->
+    <script src="/js/navigation-loader.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" alt="Shawn's Gold Standard Logo">
+                </a>
+                <p class="tagline">Pittsburgh's Trusted Gold Buyer</p>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/pages/services.html">Services</a></li>
+                    <li><a href="/pages/how-it-works.html">How It Works</a></li>
+                    <li><a href="/pages/about.html">About Shawn</a></li>
+                    <li><a href="/pages/testimonials.html">Testimonials</a></li>
+                    <li><a href="/pages/gallery.html" class="active">Gallery</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <a href="/pages/quote.html" class="btn btn-primary">Get a Quote</a>
+                <button class="hamburger" id="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Photo Gallery</h1>
+                <p class="lead-text">Browse examples of gold, silver, coins, jewelry, and collectibles we purchase</p>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <!-- Gallery Tabs -->
+                <div class="gallery-tabs">
+                    <div class="gallery-tab active" data-tab="recent-purchases">Recent Purchases</div>
+                    <div class="gallery-tab" data-tab="gold-items">Gold Items</div>
+                    <div class="gallery-tab" data-tab="silver-items">Silver Items</div>
+                    <div class="gallery-tab" data-tab="coins-collectibles">Coins & Collectibles</div>
+                    <div class="gallery-tab" data-tab="jewelry">Jewelry</div>
+                </div>
+                
+                <!-- Recent Purchases Tab -->
+                <div class="tab-content active" id="recent-purchases">
+                    <div class="gallery-filter">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="gold">Gold</button>
+                        <button class="filter-btn" data-filter="silver">Silver</button>
+                        <button class="filter-btn" data-filter="coins">Coins</button>
+                        <button class="filter-btn" data-filter="jewelry">Jewelry</button>
+                    </div>
+                    
+                    <div class="gallery-container" id="lightgallery-recent">
+                        <a class="gallery-item" data-category="gold" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-bars_ygacap.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-bars_ygacap.jpg" alt="Gold Bars">
+                            <div class="gallery-caption">Gold Bars - Various Weights</div>
+                        </a>
+                        <a class="gallery-item" data-category="gold jewelry" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-jewelry_wspaba.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-jewelry_wspaba.jpg" alt="Gold Jewelry">
+                            <div class="gallery-caption">14K Gold Jewelry Collection</div>
+                        </a>
+                        <a class="gallery-item" data-category="silver" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-coins_dcv3ym.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-coins_dcv3ym.jpg" alt="Silver Coins">
+                            <div class="gallery-caption">Silver Eagle Collection</div>
+                        </a>
+                        <a class="gallery-item" data-category="jewelry" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/jewelry_jjcfd5.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/jewelry_jjcfd5.jpg" alt="Diamond Jewelry">
+                            <div class="gallery-caption">Diamond Ring Set</div>
+                        </a>
+                        <a class="gallery-item" data-category="coins" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/rare-coins_wtdily.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/rare-coins_wtdily.jpg" alt="Rare Coins">
+                            <div class="gallery-caption">Rare Numismatic Collection</div>
+                        </a>
+                        <a class="gallery-item" data-category="gold" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg" alt="Gold Coins">
+                            <div class="gallery-caption">Gold Coin Set</div>
+                        </a>
+                        <a class="gallery-item" data-category="silver" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-bars_q0kpnh.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-bars_q0kpnh.jpg" alt="Silver Bars">
+                            <div class="gallery-caption">Silver Bullion Bars</div>
+                        </a>
+                        <a class="gallery-item" data-category="jewelry" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/watches_xy5dip.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/watches_xy5dip.jpg" alt="Luxury Watch">
+                            <div class="gallery-caption">Vintage Luxury Watch</div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Gold Items Tab -->
+                <div class="tab-content" id="gold-items">
+                    <div class="gallery-container" id="lightgallery-gold">
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-bars_ygacap.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-bars_ygacap.jpg" alt="Gold Bars">
+                            <div class="gallery-caption">Gold Bars - Various Weights</div>
+                        </a>
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg" alt="Gold Coins">
+                            <div class="gallery-caption">Gold Coin Set</div>
+                        </a>
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-jewelry_wspaba.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-jewelry_wspaba.jpg" alt="Gold Jewelry">
+                            <div class="gallery-caption">14K Gold Jewelry Collection</div>
+                        </a>
+                        <!-- More gold items would be added here -->
+                    </div>
+                </div>
+                
+                <!-- Silver Items Tab -->
+                <div class="tab-content" id="silver-items">
+                    <div class="gallery-container" id="lightgallery-silver">
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-coins_dcv3ym.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-coins_dcv3ym.jpg" alt="Silver Coins">
+                            <div class="gallery-caption">Silver Eagle Collection</div>
+                        </a>
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-bars_q0kpnh.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-bars_q0kpnh.jpg" alt="Silver Bars">
+                            <div class="gallery-caption">Silver Bullion Bars</div>
+                        </a>
+                        <!-- More silver items would be added here -->
+                    </div>
+                </div>
+                
+                <!-- Coins & Collectibles Tab -->
+                <div class="tab-content" id="coins-collectibles">
+                    <div class="gallery-container" id="lightgallery-coins">
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/rare-coins_wtdily.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/rare-coins_wtdily.jpg" alt="Rare Coins">
+                            <div class="gallery-caption">Rare Numismatic Collection</div>
+                        </a>
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg" alt="Gold Coins">
+                            <div class="gallery-caption">Gold Coin Set</div>
+                        </a>
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-coins_dcv3ym.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/silver-coins_dcv3ym.jpg" alt="Silver Coins">
+                            <div class="gallery-caption">Silver Eagle Collection</div>
+                        </a>
+                        <!-- More coin items would be added here -->
+                    </div>
+                </div>
+                
+                <!-- Jewelry Tab -->
+                <div class="tab-content" id="jewelry">
+                    <div class="gallery-container" id="lightgallery-jewelry">
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/jewelry_jjcfd5.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/jewelry_jjcfd5.jpg" alt="Diamond Jewelry">
+                            <div class="gallery-caption">Diamond Ring Set</div>
+                        </a>
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-jewelry_wspaba.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-jewelry_wspaba.jpg" alt="Gold Jewelry">
+                            <div class="gallery-caption">14K Gold Jewelry Collection</div>
+                        </a>
+                        <a class="gallery-item" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/watches_xy5dip.jpg">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/watches_xy5dip.jpg" alt="Luxury Watch">
+                            <div class="gallery-caption">Vintage Luxury Watch</div>
+                        </a>
+                        <!-- More jewelry items would be added here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-info bg-light">
+            <div class="container">
+                <h2>About Our Gallery</h2>
+                <p>This gallery showcases examples of items we frequently purchase. If you have similar items or are unsure if we'd be interested in your precious metals or collectibles, please don't hesitate to contact us or submit photos for a quote.</p>
+                <p>Please note that the specific items shown here may no longer be available as they have been purchased from our customers. These images are representative of the types and quality of items we buy.</p>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Have Similar Items to Sell?</h2>
+                <p>If you have gold, silver, jewelry, or collectibles like those shown in our gallery, we'd love to provide you with a free, no-obligation quote.</p>
+                <div class="cta-buttons">
+                    <a href="/pages/quote.html" class="btn btn-primary btn-lg">Get a Free Quote</a>
+                    <a href="/pages/contact.html" class="btn btn-secondary btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" alt="Shawn's Gold Standard Logo">
+                <p>Pittsburgh's Trusted Gold Buyer</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/pages/services.html">Services</a></li>
+                        <li><a href="/pages/how-it-works.html">How It Works</a></li>
+                        <li><a href="/pages/about.html">About Shawn</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>More Info</h3>
+                    <ul>
+                        <li><a href="/pages/testimonials.html">Testimonials</a></li>
+                        <li><a href="/pages/gallery.html">Gallery</a></li>
+                        <li><a href="/pages/contact.html">Contact</a></li>
+                        <li><a href="/pages/quote.html">Get a Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/pages/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/pages/terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="copyright-year"></span> Shawn's Gold Standard. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Install button for PWA -->
+    <button id="install-btn" class="install-button">Install App</button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/zoom/lg-zoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/thumbnail/lg-thumbnail.min.js"></script>
+    <script src="/js/main.js?v=1.2"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize lightGallery for each gallery container
+            const galleryContainers = document.querySelectorAll('.gallery-container');
+            galleryContainers.forEach(container => {
+                lightGallery(container, {
+                    selector: '.gallery-item',
+                    plugins: [lgZoom, lgThumbnail],
+                    speed: 500,
+                    download: false,
+                    counter: true,
+                    enableDrag: true,
+                    enableSwipe: true
+                });
+            });
+            
+            // Gallery tab functionality
+            const tabs = document.querySelectorAll('.gallery-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Hide all tab content
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Show selected tab content
+                    const selectedTab = tab.getAttribute('data-tab');
+                    document.getElementById(selectedTab).classList.add('active');
+                });
+            });
+            
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('#lightgallery-recent .gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === 'all') {
+                            item.style.display = 'block';
+                        } else {
+                            const categories = item.getAttribute('data-category');
+                            if (categories && categories.includes(filter)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

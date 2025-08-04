@@ -1,0 +1,256 @@
+/* Navigation Bar Fixes for Mobile/Desktop */
+
+/* Force the hamburger button to be visible on tablets and mobile */
+.hamburger {
+    cursor: pointer !important;
+    z-index: 999 !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    position: relative !important;
+    padding: 10px !important;
+}
+
+/* Fix nav actions positioning to prevent button overlap */
+@media (max-width: 992px) {
+    .navbar {
+        position: relative !important;
+        padding: 10px 15px !important;
+    }
+    
+    .nav-actions {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 15px !important; /* Add space between button and hamburger */
+        position: relative !important;
+        min-width: 140px !important;
+    }
+    
+    /* Style the quote button professionally on tablet */
+    .nav-actions .btn-primary {
+        padding: 8px 15px !important;
+        font-size: 0.9rem !important;
+        white-space: nowrap !important;
+        background: linear-gradient(to bottom, var(--gold-accent), #c9a936) !important;
+        border: none !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+        border-radius: 4px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        text-transform: uppercase !important;
+        min-width: auto !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    .nav-actions .btn-primary:hover {
+        background: linear-gradient(to bottom, #d4b13b, #b69730) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) !important;
+    }
+    
+    /* Position hamburger better */
+    .hamburger {
+        margin-left: 10px !important;
+    }
+}
+
+/* Make hamburger spans more visible */
+.hamburger span {
+    display: block !important;
+    width: 25px !important;
+    height: 3px !important;
+    margin: 5px 0 !important;
+    position: relative !important;
+    background-color: var(--light-text) !important;
+    border-radius: 3px !important;
+    z-index: 1 !important;
+    transform-origin: 4px 0px !important;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease !important;
+}
+
+/* Hamburger animation when active */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(2px, -2px) !important;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0 !important;
+    transform: rotate(0deg) scale(0.2, 0.2) !important;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(0, -1px) !important;
+}
+
+/* Desktop Styles - Hide hamburger on larger screens */
+@media (min-width: 992px) {
+    .hamburger {
+        display: none !important;
+    }
+    
+    .nav-links {
+        display: flex !important;
+    }
+}
+
+/* Tablet Styles */
+@media (max-width: 992px) and (min-width: 768px) {
+    /* Show hamburger on tablet */
+    .hamburger {
+        display: block !important;
+    }
+    
+    /* Hide nav links by default */
+    .nav-links {
+        display: none !important;
+    }
+    
+    /* Show when active */
+    .nav-links.active {
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute !important;
+        top: 85px !important;
+        left: 0 !important;
+        width: 100% !important;
+        background-color: var(--navy-bg) !important;
+        padding: 20px 0 !important;
+        z-index: 99 !important;
+    }
+    
+    .nav-links ul {
+        flex-direction: column !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .nav-links li {
+        margin: 10px 0 !important;
+    }
+    
+    /* Improve tablet layout spacing */
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    /* Adjust grid layouts for tablet */
+    .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    
+    /* Ensure proper spacing between elements */
+    section {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    /* Adjust text sizes for better readability */
+    h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    h2 {
+        font-size: 2rem !important;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+    /* Position navbar elements to prevent overlaps */
+    .navbar {
+        position: relative !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 15px !important;
+    }
+    
+    /* Position the logo appropriately */
+    .logo {
+        flex: 1 !important;
+        max-width: 180px !important;
+    }
+    
+    .logo img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Fix the nav actions container */
+    .nav-actions {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 10px !important;
+        flex: 1 !important;
+    }
+    
+    /* Style the mobile quote button professionally */
+    .nav-actions .btn-primary {
+        padding: 7px 10px !important;
+        font-size: 0.85rem !important;
+        white-space: nowrap !important;
+        background: linear-gradient(to bottom, var(--gold-accent), #c9a936) !important;
+        border: none !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+        border-radius: 4px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        text-transform: uppercase !important;
+        min-width: auto !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    .nav-actions .btn-primary:hover {
+        background: linear-gradient(to bottom, #d4b13b, #b69730) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) !important;
+    }
+    
+    /* Ensure hamburger is visible and properly positioned */
+    .hamburger {
+        display: block !important;
+        position: relative !important;
+        z-index: 100 !important;
+        margin-left: 5px !important;
+    }
+    
+    /* Fix navigation menu positioning and appearance on mobile */
+    .nav-links {
+        display: none !important;
+        position: fixed !important;
+        top: 85px !important;
+        left: 0 !important;
+        right: 0 !important;
+        background-color: var(--navy-bg) !important;
+        padding: 2rem 0 !important;
+        z-index: 99 !important;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.2) !important;
+    }
+    
+    .nav-links.active {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .nav-links ul {
+        flex-direction: column !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 0 !important;
+    }
+    
+    .nav-links li {
+        margin: 1rem 0 !important;
+    }
+    
+    /* Fix mobile grids */
+    .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr !important;
+    }
+}
