@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         tabletCSS.href = '/styles/tablet-fixes.css';
         document.head.appendChild(tabletCSS);
         
+        // Load the cache control script
+        const cacheScript = document.createElement('script');
+        cacheScript.src = '/js/cache-control.js';
+        document.head.appendChild(cacheScript);
+        
         // Find the header element that needs to be replaced
         const existingHeader = document.querySelector('header');
         

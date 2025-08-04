@@ -1,0 +1,153 @@
+/* Metal Prices Widget Styling */
+
+.metal-prices-section {
+    padding: 30px 0;
+    background: linear-gradient(180deg, rgba(248,248,248,1) 0%, rgba(255,255,255,1) 100%);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+#metal-prices-container {
+    background: linear-gradient(145deg, #111823 0%, #1d2c42 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: white;
+    margin: 30px auto;
+    max-width: 90%;
+    overflow: hidden;
+    padding: 20px 30px;
+    position: relative;
+}
+
+.metal-prices-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.metal-prices-header h3 {
+    font-size: 1.3rem;
+    margin: 0;
+    color: var(--gold-accent);
+    font-weight: 600;
+}
+
+.update-time {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.metal-prices-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.metal-price {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.metal-price:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.metal-icon {
+    margin-right: 12px;
+    font-size: 1.8rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.metal-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.metal-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.price {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.gold .metal-icon, .gold .price {
+    color: var(--gold-accent);
+}
+
+.silver .metal-icon, .silver .price {
+    color: #C0C0C0;
+}
+
+.platinum .metal-icon, .platinum .price {
+    color: #E5E4E2;
+}
+
+.diamonds .metal-icon, .diamonds .price {
+    color: #B9F2FF;
+}
+
+.metal-prices-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--gold-accent);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.metal-prices-error {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .metal-prices-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .metal-prices-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metal-prices-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .update-time {
+        margin-top: 5px;
+    }
+    
+    #metal-prices-container {
+        padding: 15px;
+    }
+}

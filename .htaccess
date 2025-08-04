@@ -1,0 +1,36 @@
+# Cache Control Headers
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Images can be cached a bit longer
+  ExpiresByType image/jpeg "access plus 1 week"
+  ExpiresByType image/png "access plus 1 week"
+  ExpiresByType image/gif "access plus 1 week"
+  ExpiresByType image/webp "access plus 1 week"
+  ExpiresByType image/svg+xml "access plus 1 week"
+  ExpiresByType image/x-icon "access plus 1 week"
+  
+  # CSS, JavaScript - short cache time for frequent updates
+  ExpiresByType text/css "access plus 1 hour"
+  ExpiresByType text/javascript "access plus 1 hour"
+  ExpiresByType application/javascript "access plus 1 hour"
+  
+  # HTML pages - very short cache for immediate updates
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Add version control using query strings
+<IfModule mod_headers.c>
+  # Force no caching for HTML documents
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+
+# Disable ETags as they can cause caching issues
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+FileETag None

@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shawn’s Gold Standard | Pittsburgh Gold Buyer | Top Dollar Paid</title>
-    <meta name="description" content="Sell gold, silver, coins, and jewelry in Pittsburgh. Trusted buyer. Fast quotes. Top payouts. Send photos and get paid today.">
+    <meta name="description" content="Sell gold, silver, diamonds, coins, and jewelry in Pittsburgh. Trusted buyer. Fast quotes. Top payouts. Send photos and get paid today.">
     <!-- SEO / Social Meta Tags -->
-    <meta property="og:title" content="Shawn’s Gold Standard | Pittsburgh Gold Buyer | Top Dollar Paid">
-    <meta property="og:description" content="Sell gold, silver, coins, and jewelry in Pittsburgh. Trusted buyer. Fast quotes. Top payouts. Send photos and get paid today.">
+    <meta property="og:title" content="Shawn's Gold Standard | Pittsburgh Gold & Diamond Buyer | Top Dollar Paid">
+    <meta property="og:description" content="Sell gold, silver, diamonds, coins, and jewelry in Pittsburgh. Trusted buyer. Fast quotes. Top payouts. Send photos and get paid today.">
     <meta property="og:image" content="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg">
     <meta property="og:url" content="https://shawnsgoldstandard.com">
     <meta property="og:site_name" content="Shawn’s Gold Standard">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Shawn’s Gold Standard | Pittsburgh Gold Buyer | Top Dollar Paid">
-    <meta name="twitter:description" content="Sell gold, silver, coins, and jewelry in Pittsburgh. Trusted buyer. Fast quotes. Top payouts. Send photos and get paid today.">
+    <meta name="twitter:title" content="Shawn's Gold Standard | Pittsburgh Gold & Diamond Buyer | Top Dollar Paid">
+    <meta name="twitter:description" content="Sell gold, silver, diamonds, coins, and jewelry in Pittsburgh. Trusted buyer. Fast quotes. Top payouts. Send photos and get paid today.">
     <meta name="twitter:image" content="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754049427/gold-coins-background_v55bcs.jpg">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Shawn’s Gold Standard",
+      "name": "Shawn's Gold Standard",
       "image": "https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png",
       "@id": "https://shawnsgoldstandard.com",
       "url": "https://shawnsgoldstandard.com",
-      "telephone": "412-555-0152",
-      "description": "Your trusted local expert in Pittsburgh for selling gold, silver, coins, and jewelry. We offer fair, transparent evaluations and top-dollar payouts.",
+      "telephone": "878-207-0994",
+      "description": "Your trusted local expert in Pittsburgh for selling gold, silver, diamonds, coins, and jewelry. We offer fair, transparent evaluations and top-dollar payouts, meeting clients in safe, public locations.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Pittsburgh",
@@ -83,6 +83,10 @@
     <link rel="stylesheet" href="/styles/responsive-fixes.css?v=1.0">
     <link rel="stylesheet" href="/styles/accessibility.css?v=1.0">
     <link rel="stylesheet" href="/styles/evaluation-image.css?v=1.0">
+    <link rel="stylesheet" href="/styles/metal-prices.css?v=1.0">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Favicon -->
     <link rel="icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" type="image/png">
@@ -128,8 +132,8 @@
             <div class="hero-overlay"></div>
             <div class="hero-content container">
                 <div class="hero-text">
-                    <h1 class="hero-headline">Sell Your Gold for Top Dollar in Pittsburgh</h1>
-                    <p class="hero-tagline">Transparent Pricing, Fast Payments, and Trusted Local Service.</p>
+                    <h1 class="hero-headline">Sell Your Gold & Diamonds for Top Dollar in Pittsburgh</h1>
+                    <p class="hero-tagline">Transparent Pricing, Fast Payments, and Trusted Local Service for Gold, Silver, Diamonds, and Jewelry.</p>
                     <div class="hero-features">
                         <div class="hero-feature">
                             <span class="feature-icon">✓</span>
@@ -151,6 +155,15 @@
                 </div>
                 <div class="hero-image">
                     <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754282344/Gold_coins_and_jewelry_being_evaluated._pgh0t1.png" alt="Gold jewelry and coins being evaluated" class="hero-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Metal Prices Widget -->
+        <section class="metal-prices-section">
+            <div class="container">
+                <div id="metal-prices-container">
+                    <!-- Metal prices will be populated by JavaScript -->
                 </div>
             </div>
         </section>
@@ -604,9 +617,10 @@
                     <div class="footer-nav-group">
                         <h4>Contact</h4>
                         <ul class="footer-contact">
-                            <li><i class="fas fa-map-marker-alt"></i> Pittsburgh, PA</li>
-                            <li><i class="fas fa-phone"></i> (412) 555-1234</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Pittsburgh, PA (by appointment)</li>
+                            <li><i class="fas fa-phone"></i> (878) 207-0994</li>
                             <li><i class="fas fa-envelope"></i> info@shawnsgoldstandard.com</li>
+                            <li><i class="fas fa-info-circle"></i> We meet clients in safe, public locations</li>
                         </ul>
                         <div class="footer-social">
                             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -634,6 +648,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/metal-prices.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
