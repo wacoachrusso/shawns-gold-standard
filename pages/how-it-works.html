@@ -19,87 +19,107 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="navbar">
             <div class="logo">
                 <a href="/index.html">
                     <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" alt="Shawn's Gold Standard Logo">
                 </a>
-                <p>Set the Gold Standard. Get the Gold Payout.</p>
+                <p class="tagline">Set the Gold Standard.<br>Get the Gold Payout.</p>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <ul>
                     <li><a href="/index.html">Home</a></li>
                     <li><a href="/pages/quote.html">Get a Quote</a></li>
-                    <li><a href="/pages/how-it-works.html">How It Works</a></li>
+                    <li><a href="/pages/how-it-works.html" class="active">How It Works</a></li>
                     <li><a href="/pages/about.html">About</a></li>
                     <li><a href="/pages/contact.html">Contact</a></li>
                 </ul>
             </div>
-            <button class="hamburger" id="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-actions">
+                <a href="tel:412-555-0152" class="btn btn-secondary">Call Now</a>
+                <button class="hamburger" id="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <main class="page-main">
-        <h1>Our Simple, Secure 4-Step Process</h1>
-        <section class="how-it-works-steps">
-            <div class="step-item">
-                <div class="step-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
-                </div>
-                <h3>Step 1: Submit Your Quote Request</h3>
-                <p>Use our simple online form to tell us about your items. Upload a few clear photos—no need for a professional camera, your phone is perfect.</p>
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title">A Simple & Secure Process</h1>
+                <p class="page-subtitle">We've streamlined selling your precious metals to be as easy and transparent as possible. Here’s how it works.</p>
             </div>
-            <div class="step-item">
-                <div class="step-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+        </section>
+
+        <section class="how-it-works-detailed-steps">
+            <div class="container">
+                <div class="step-row">
+                    <div class="step-content">
+                        <span class="step-number">Step 1</span>
+                        <h3>Submit Your Items Online</h3>
+                        <p>Start by filling out our secure quote form. Provide a brief description of your items and upload a few photos. It’s quick, easy, and can be done from any device.</p>
+                    </div>
+                    <div class="step-visual">
+                        <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754160828/how-it-works-1_v1_y8tcde.jpg" alt="Person filling out an online form">
+                    </div>
                 </div>
-                <h3>Step 2: Receive Your Offer</h3>
-                <p>Shawn will personally assess your items and send you a transparent, top-dollar offer based on real-time market values. No obligations, no pressure.</p>
+
+                <div class="step-row step-row-reverse">
+                    <div class="step-content">
+                        <span class="step-number">Step 2</span>
+                        <h3>Receive a Fair Offer</h3>
+                        <p>Shawn will personally review your submission and provide a top-dollar offer based on current market values. We pride ourselves on transparency—no hidden fees, just an honest price.</p>
+                    </div>
+                    <div class="step-visual">
+                        <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754160828/how-it-works-2_v1_w5vjaf.jpg" alt="Jeweler inspecting a gold ring">
+                    </div>
+                </div>
+
+                <div class="step-row">
+                    <div class="step-content">
+                        <span class="step-number">Step 3</span>
+                        <h3>Secure Your Items</h3>
+                        <p>Once you accept, we arrange the logistics. You can choose to meet at a secure public location in the Pittsburgh area or use our free, fully insured, and prepaid shipping kit to send us your items.</p>
+                    </div>
+                    <div class="step-visual">
+                        <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754160828/how-it-works-3_v1_c0bcyb.jpg" alt="Secure package being prepared for shipping">
+                    </div>
+                </div>
+
+                <div class="step-row step-row-reverse">
+                    <div class="step-content">
+                        <span class="step-number">Step 4</span>
+                        <h3>Get Paid Instantly</h3>
+                        <p>The moment we verify your items, your payment is processed immediately. Choose the method that works best for you: Cash, Zelle, Venmo, or a business check.</p>
+                    </div>
+                    <div class="step-visual">
+                        <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754160828/how-it-works-4_v1_z3z7jw.jpg" alt="Person receiving a payment notification on their phone">
+                    </div>
+                </div>
             </div>
-            <div class="step-item">
-                <div class="step-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                </div>
-                <h3>Step 3: Arrange Secure Handover</h3>
-                <p>If you accept the offer, we make it easy. Choose a secure, insured, prepaid shipping label on us, or schedule a safe, public meetup in the Pittsburgh area.</p>
-            </div>
-            <div class="step-item">
-                <div class="step-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 6h20M2 18h20"></path></svg>
-                </div>
-                <h3>Step 4: Get Paid Instantly</h3>
-                <p>As soon as your items are verified, we send your payment immediately through your preferred method—Cash, Zelle, Venmo, or Check.</p>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta-section">
+            <div class="container">
+                <h2 class="section-title">Ready to Get Started?</h2>
+                <p class="cta-tagline">Unlock the true value of your gold, silver, and jewelry today. Our process is simple, secure, and guarantees you the best price. There's no obligation—just a fair, honest offer.</p>
+                <a href="/pages/quote.html" class="btn btn-primary btn-lg">Get My Free Quote</a>
             </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Shawn's Gold Standard. All Rights Reserved.</p>
-        <button id="install-btn" class="btn-primary" style="display: none; margin-top: 1rem;">Install App</button>
-        <p>Disclosure: Shawn’s Gold Standard does not provide investment advice or appraisals.</p>
         <div class="footer-links">
             <a href="/pages/privacy.html">Privacy Policy</a>
             <a href="/pages/terms.html">Terms of Service</a>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../js/config.js"></script>
     <script src="../js/main.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
-    </script>
 </body>
 </html>

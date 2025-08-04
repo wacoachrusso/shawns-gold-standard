@@ -75,78 +75,111 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/styles/main.css?v=1.2">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png" type="image/png">
+    <link rel="icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" type="image/png">
     <link rel="apple-touch-icon" href="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753997955/shawn_logo_sdsuuv.png">
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="navbar">
             <div class="logo">
                 <a href="/index.html">
-                    <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" alt="Shawn's Gold Standard Logo">
+                    <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" alt="Shawn’s Gold Standard Logo">
                 </a>
-                <p>Set the Gold Standard. Get the Gold Payout.</p>
+                <p class="tagline">Pittsburgh’s Trusted Gold Buyer</p>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <ul>
                     <li><a href="/index.html">Home</a></li>
-                    <li><a href="/pages/quote.html">Get a Quote</a></li>
+                    <li><a href="/pages/services.html">Services</a></li>
                     <li><a href="/pages/how-it-works.html">How It Works</a></li>
-                    <li><a href="/pages/about.html">About</a></li>
+                    <li><a href="/pages/about.html">About Shawn</a></li>
+                    <li><a href="/pages/testimonials.html">Testimonials</a></li>
+                    <li><a href="/pages/gallery.html">Gallery</a></li>
                     <li><a href="/pages/contact.html">Contact</a></li>
                 </ul>
             </div>
-            <button class="hamburger" id="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-actions">
+                <a href="/pages/quote.html" class="btn btn-primary">Get a Quote</a>
+                <button class="hamburger" id="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
     <main>
         <section class="hero">
             <div class="hero-content">
-                <p class="tagline">Honest. Local. Professional.</p>
-                <h1>Unlock the True Value of Your Precious Metals</h1>
-                <p class="subtext">Get top dollar with transparent, competitive pricing and a seamless, secure process.</p>
-                <a href="/pages/quote.html" class="cta-button">Start Your Free, No-Obligation Quote</a>
+                <h1 class="hero-headline">Sell Your Gold for Top Dollar in Pittsburgh</h1>
+                <p class="hero-tagline">Transparent Pricing, Fast Payments, and Trusted Local Service.</p>
+                <a href="/pages/quote.html" class="btn btn-primary btn-lg">Get a Free Quote</a>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works-section">
+            <div class="container">
+                <h2 class="section-title">Our 3-Step Process</h2>
+                <div class="process-steps">
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754062831/icon-quote_v1_gq1ziz.png" alt="Quote Icon">
+                        </div>
+                        <h3>1. Get Your Quote</h3>
+                        <p>Fill out our simple online form, upload a few photos, and get a free, no-obligation quote for your items.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754062831/icon-evaluate_v1_z3u9xl.png" alt="Evaluation Icon">
+                        </div>
+                        <h3>2. We Evaluate</h3>
+                        <p>We’ll carefully evaluate your items based on purity, weight, and current market value to ensure you get the best price.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754062831/icon-payment_v1_k8b5kl.png" alt="Payment Icon">
+                        </div>
+                        <h3>3. Get Paid Fast</h3>
+                        <p>Once you accept our offer, we provide immediate payment. It’s that simple, secure, and fast.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Why Choose Us Section -->
-        <section class="why-choose-us why-choose-us-section">
-            <h2>Why Choose Shawn’s Gold Standard?</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="icon-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+        <section class="why-choose-us-section">
+            <div class="container">
+                <h2 class="section-title">Why Choose Shawn’s Gold Standard?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754082627/icon-payouts_v1_hnq4sc.png" alt="Top Payouts Icon">
+                        </div>
+                        <h3>Top-Tier Payouts</h3>
+                        <p>Our competitive pricing and transparent evaluation process ensure you get the maximum value for your items.</p>
                     </div>
-                    <h3>Top-Dollar Payouts</h3>
-                    <p>Our expert analysis and transparent pricing ensure you get the best possible offer for your precious metals. No hidden fees, just honest value.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754082627/icon-trust_v1_a3i9z7.png" alt="Trusted & Secure Icon">
+                        </div>
+                        <h3>Trusted & Secure</h3>
+                        <p>With years of experience in Pittsburgh, we offer a secure, confidential, and professional service you can trust.</p>
                     </div>
-                    <h3>Secure & Confidential</h3>
-                    <p>Your privacy and security are our top priorities. Our process is discreet and your items are handled with the utmost care in a secure facility.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="icon-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="M14.5 9.5 21 3m0 0h-6m6 0v6M3 21l6.5-6.5M3 21v-6m0 6h6"></path></svg>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754082627/icon-fast_v1_s4v5s9.png" alt="Fast Process Icon">
+                        </div>
+                        <h3>Fast & Easy Process</h3>
+                        <p>From a quick online quote to immediate payment, our process is designed to be simple and convenient for you.</p>
                     </div>
-                    <h3>Expert, Friendly Service</h3>
-                    <p>With years of experience in the precious metals industry, Shawn provides personalized, no-pressure service to every customer.</p>
                 </div>
             </div>
         </section>
@@ -173,53 +206,88 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section class="testimonials-section">
-            <h2>Our Satisfied Customers</h2>
-            <div class="testimonials-container">
-                <div class="testimonial-box">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">&#8220;</div>
-                        <p class="testimonial-text">Shawn was fantastic. He gave me a better price than any jewelry store, and the whole process was fast and easy. Highly recommend!</p>
-                        <div class="testimonial-author">
-                            <strong>Sarah K.</strong>
-                            <span>Pittsburgh</span>
+        <!-- Testimonial Section -->
+        <section class="testimonial-section">
+            <div class="container">
+                <h2 class="section-title">What Our Customers Are Saying</h2>
+                <div class="testimonial-grid">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083775/female-avatar_v1_p35gbe.png" alt="Sarah K." class="testimonial-avatar">
+                            <div class="testimonial-author">
+                                <h4>Sarah K.</h4>
+                                <p>Pittsburgh, PA</p>
+                            </div>
                         </div>
+                        <div class="star-rating">
+                            <!-- 5 stars -->
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                        </div>
+                        <blockquote>
+                            <p>"Shawn was fantastic. He gave me a better price than any jewelry store, and the whole process was fast and easy. Highly recommend!"</p>
+                        </blockquote>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083775/male-avatar_v1_t3sbqq.png" alt="David L." class="testimonial-avatar">
+                            <div class="testimonial-author">
+                                <h4>David L.</h4>
+                                <p>Monroeville, PA</p>
+                            </div>
+                        </div>
+                        <div class="star-rating">
+                             <!-- 5 stars -->
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                        </div>
+                        <blockquote>
+                            <p>"I was nervous about selling my old coins, but Shawn made me feel comfortable right away. He's honest, professional, and paid me on the spot."</p>
+                        </blockquote>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083775/female-avatar-2_v1_w4gajc.png" alt="Maria G." class="testimonial-avatar">
+                            <div class="testimonial-author">
+                                <h4>Maria G.</h4>
+                                <p>Wexford, PA</p>
+                            </div>
+                        </div>
+                        <div class="star-rating">
+                             <!-- 5 stars -->
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754083810/star-icon_v1_j5prbf.png" alt="Star">
+                        </div>
+                        <blockquote>
+                            <p>"Five stars! I shopped around and Shawn gave me the best offer by a long shot. Don't waste your time anywhere else."</p>
+                        </blockquote>
                     </div>
                 </div>
-                
-                <div class="testimonial-box">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">&#8220;</div>
-                        <p class="testimonial-text">I was nervous about selling my old coins, but Shawn made me feel comfortable right away. He's honest, professional, and paid me on the spot.</p>
-                        <div class="testimonial-author">
-                            <strong>David L.</strong>
-                            <span>Monroeville</span>
-                        </div>
-                    </div>
+                <div class="testimonial-cta">
+                    <a href="#" class="btn btn-secondary">Leave a Review</a>
                 </div>
-                
-                <div class="testimonial-box">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">&#8220;</div>
-                        <p class="testimonial-text">Five stars! I shopped around and Shawn gave me the best offer by a long shot. Don't waste your time anywhere else.</p>
-                        <div class="testimonial-author">
-                            <strong>Maria G.</strong>
-                            <span>Wexford, PA</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-cta">
-                <p>Want to leave a review? <a href="#" target="_blank">Share your experience on Google</a>.</p>
             </div>
         </section>
 
         <!-- Final CTA Section -->
-        <section class="final-cta">
-            <h2>Ready to Unlock the Value of Your Precious Metals?</h2>
-            <p>There's no-obligation and the quote is always free. Discover what your items are worth today!</p>
-            <a href="/pages/quote.html" class="cta-button">Get My Free Quote Now</a>
+        <section class="final-cta-section">
+            <div class="container">
+                <h2 class="section-title">Ready to Get Started?</h2>
+                <p class="cta-tagline">Unlock the true value of your gold, silver, and jewelry today. Our process is simple, secure, and guarantees you the best price. There's no obligation—just a fair, honest offer.</p>
+                <a href="/pages/quote.html" class="btn btn-primary btn-lg">Get My Free Quote</a>
+            </div>
         </section>
 
     </main>

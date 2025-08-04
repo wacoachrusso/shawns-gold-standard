@@ -19,76 +19,118 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
     <header>
-        <nav>
+        <nav class="navbar">
             <div class="logo">
                 <a href="/index.html">
                     <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" alt="Shawn's Gold Standard Logo">
                 </a>
-                <p>Set the Gold Standard. Get the Gold Payout.</p>
+                <p class="tagline">Set the Gold Standard.<br>Get the Gold Payout.</p>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <ul>
                     <li><a href="/index.html">Home</a></li>
-                    <li><a href="/pages/quote.html">Get a Quote</a></li>
+                    <li><a href="/pages/quote.html" class="active">Get a Quote</a></li>
                     <li><a href="/pages/how-it-works.html">How It Works</a></li>
                     <li><a href="/pages/about.html">About</a></li>
                     <li><a href="/pages/contact.html">Contact</a></li>
                 </ul>
             </div>
-            <button class="hamburger" id="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-actions">
+                <a href="tel:412-555-0152" class="btn btn-secondary">Call Now</a>
+                <button class="hamburger" id="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <main class="page-main">
-        <h1>Get a Free, No-Obligation Quote</h1>
-        <p>Fill out the form below and upload photos of your items. We'll get back to you with a top-dollar offer quickly.</p>
-        
-        <form id="quote-form" class="quote-form" novalidate>
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="e.g., John Doe" required>
+    <main>
+        <section class="quote-page-section">
+            <div class="container quote-container">
+                <div class="quote-info-panel">
+                    <h2>Your Trusted Partner in Precious Metals</h2>
+                    <p>Fill out the form to receive a fast, fair, and confidential offer for your items. Our process is designed to be simple and secure.</p>
+                    <ul class="why-us-list">
+                        <li>
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754082627/icon-payouts_v1_hnq4sc.png" alt="Top Payouts">
+                            <div>
+                                <h4>Top-Tier Payouts</h4>
+                                <p>We guarantee the best prices for your gold and silver.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754082627/icon-secure_v1_n84vmm.png" alt="Secure Process">
+                            <div>
+                                <h4>Secure & Confidential</h4>
+                                <p>Your privacy is our priority. All submissions are secure.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1754082627/icon-expert_v1_s8j1p1.png" alt="Expert Evaluation">
+                            <div>
+                                <h4>Expert Evaluation</h4>
+                                <p>Our experienced team ensures you get a fair and accurate offer.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="trust-seals">
+                        <p><strong>As seen on:</strong></p>
+                        <span>Local News</span> 
+                        <span>Pittsburgh Post-Gazette</span>
+                    </div>
+                </div>
 
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="e.g., john.doe@example.com" required>
-
-            <label for="phone">Phone Number (Optional)</label>
-            <input type="tel" id="phone" name="phone" placeholder="e.g., 123-456-7890">
-
-            <label for="metal-type">Type of Metal</label>
-            <select id="metal-type" name="metal-type">
-                <option value="gold">Gold</option>
-                <option value="silver">Silver</option>
-                <option value="platinum">Platinum</option>
-                <option value="mixed">Mixed</option>
-                <option value="not-sure">Not Sure</option>
-            </select>
-
-            <label for="description">Description of Items</label>
-            <textarea id="description" name="description" rows="8" placeholder="Please describe your items (e.g., 14k gold chain, silver coins, etc.)"></textarea>
-
-            <label for="images">Upload Photos</label>
-            <div class="upload-container">
-                <input type="file" id="images" name="images" multiple accept="image/*" class="file-input">
-                <div class="upload-button-container">
-                    <button type="button" id="select-files-btn" class="btn-secondary">Select Photos</button>
-                    <span class="file-count">No files selected</span>
+                <div class="quote-form-panel">
+                    <h3>Get Your Free Quote</h3>
+                    <form id="quote-form" class="quote-form" novalidate>
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="full-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="e.g., john.doe@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="metal-type">Metal Type</label>
+                            <select id="metal-type" name="metal-type" required>
+                                <option value="" disabled selected>Select a metal...</option>
+                                <option value="Gold">Gold</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Platinum">Platinum</option>
+                                <option value="Other">Other/Unsure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                        </div>
+                        <div class="form-group">
+                            <label for="item-description">Description of Items</label>
+                            <textarea id="item-description" name="item-description" rows="4" placeholder="e.g., 14k gold necklace, silver coins, diamond ring" required></textarea>
+                        </div>
+                        <div class="form-group files">
+                            <label for="photo-upload" class="btn btn-primary photo-upload-btn">Select Photos (Max 3)</label>
+                            <input type="file" class="form-control" id="photo-upload" multiple accept="image/*" style="display: none;">
+                            <p class="photo-help-text">Click to add up to 3 photos of your items</p>
+                        </div>
+                        <div id="photo-previews" class="photo-previews-container"></div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit for Quote</button>
+                    </form>
                 </div>
             </div>
-            <div id="image-preview-container"></div>
-
-            <button type="submit">Submit for Quote</button>
-        </form>
-        <p class="trust-text">We never share your information. Everything you submit is private and secure.</p>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Shawn's Gold Standard. All Rights Reserved.</p>
-        <button id="install-btn" class="btn-primary" style="display: none; margin-top: 1rem;">Install App</button>
-        <p>Disclosure: Shawn’s Gold Standard does not provide investment advice or appraisals.</p>
         <div class="footer-links">
             <a href="/pages/privacy.html">Privacy Policy</a>
             <a href="/pages/terms.html">Terms of Service</a>
@@ -99,16 +141,17 @@
     <script src="../js/config.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="../js/main.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
-    </script>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="quote-success-modal">
+        <div class="quote-success-content">
+            <span class="close-button">&times;</span>
+            <img src="https://res.cloudinary.com/dcuwsbzv5/image/upload/v1753977867/shawn_transparent_logo_esebpg.png" alt="Shawn's Gold Standard" class="modal-logo">
+            <h2>Thank You!</h2>
+            <p>Your quote request has been submitted successfully.</p>
+            <p>A confirmation email has been sent to <strong id="user-email-span">your email</strong>. Our team will review your items and contact you shortly.</p>
+            <button id="return-home-button" class="btn btn-primary">Return to Homepage</button>
+        </div>
+    </div>
 </body>
 </html>

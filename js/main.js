@@ -1,23 +1,38 @@
-// Shawn's Gold Standard - Main JavaScript File
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Auto-format phone number
-    const formatPhoneNumber = (input) => {
-        // Strip all non-numeric characters
-        let value = input.value.replace(/\D/g, '');
-        // Apply formatting: 123-456-7890
-        if (value.length > 3 && value.length <= 6) {
-            value = `${value.slice(0, 3)}-${value.slice(3)}`;
-        } else if (value.length > 6) {
-            value = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6, 10)}`;
-        }
-        input.value = value;
-    };
+    // Initialize Supabase client globally within the listener
+    let _supabase;
+    if (typeof supabase !== 'undefined' && typeof SUPABASE_URL !== 'undefined' && typeof SUPABASE_ANON_KEY !== 'undefined') {
+        const { createClient } = supabase;
+        _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        console.log("Supabase client initialized.");
+    } else {
+        console.error('Supabase client or credentials are not loaded. Some features may not work.');
+    }
 
+    // Auto-format phone number
     const phoneInputs = document.querySelectorAll('input[type="tel"]');
-    phoneInputs.forEach(input => {
-        input.addEventListener('input', () => formatPhoneNumber(input));
-    });
+    if (phoneInputs.length > 0) {
+        const formatPhoneNumber = (input) => {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 3 && value.length <= 6) {
+                value = `${value.slice(0, 3)}-${value.slice(3)}`;
+            } else if (value.length > 6) {
+                value = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6, 10)}`;
+            }
+            input.value = value;
+        };
+        phoneInputs.forEach(input => {
+            input.addEventListener('input', () => formatPhoneNumber(input));
+        });
+    }
+
+    // Preloader Logic
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            preloader.style.display = 'none';
+        });
+    }
 
     // Shrink header on scroll
     const header = document.querySelector('header');
@@ -31,16 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Ensure Supabase is available
-    if (typeof supabase === 'undefined') {
-        console.error('Supabase client is not loaded.');
-        return;
-    }
-
-    const { createClient } = supabase;
-    const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    console.log("Supabase client initialized.");
-
     // Handle Hamburger Menu Toggle
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const navLinks = document.querySelector('.nav-links');
@@ -52,256 +57,252 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Testimonial Slider
-    const sliderContainer = document.querySelector('.testimonial-grid');
-    const slides = document.querySelectorAll('.testimonial-card');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    const testimonialSlider = document.querySelector('.testimonial-slider-container');
+    if (testimonialSlider) {
+        const sliderContainer = testimonialSlider.querySelector('.testimonial-grid');
+        const slides = sliderContainer.querySelectorAll('.testimonial-card');
+        const nextBtn = testimonialSlider.querySelector('.next-btn');
+        const prevBtn = testimonialSlider.querySelector('.prev-btn');
 
-    if (sliderContainer && slides.length > 0) {
-        let currentIndex = 0;
-        let slideInterval;
+        if (sliderContainer && slides.length > 0) {
+            let currentIndex = 0;
+            let slideInterval;
 
-        const showSlide = (index) => {
-            sliderContainer.style.transform = `translateX(-${index * 100}%)`;
-        };
+            const showSlide = (index) => {
+                sliderContainer.style.transform = `translateX(-${index * 100}%)`;
+            };
+            const nextSlide = () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            };
+            const prevSlide = () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(currentIndex);
+            };
+            const startSlider = () => {
+                slideInterval = setInterval(nextSlide, 5000);
+            };
+            const stopSlider = () => {
+                clearInterval(slideInterval);
+            };
 
-        const nextSlide = () => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-        };
-
-        const prevSlide = () => {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
-        };
-
-        const startSlider = () => {
-            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-        };
-
-        const stopSlider = () => {
-            clearInterval(slideInterval);
-        };
-
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            stopSlider();
-            startSlider(); // Restart timer on manual navigation
-        });
-
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            stopSlider();
-            startSlider(); // Restart timer on manual navigation
-        });
-        
-        // Pause slider on hover
-        document.querySelector('.testimonial-slider-container').addEventListener('mouseenter', stopSlider);
-        document.querySelector('.testimonial-slider-container').addEventListener('mouseleave', startSlider);
-
-        startSlider();
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => { nextSlide(); stopSlider(); startSlider(); });
+            }
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => { prevSlide(); stopSlider(); startSlider(); });
+            }
+            
+            testimonialSlider.addEventListener('mouseenter', stopSlider);
+            testimonialSlider.addEventListener('mouseleave', startSlider);
+            startSlider();
+        }
     }
 
     // Scroll Animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
+    const sectionsToAnimate = document.querySelectorAll('.fade-in-section');
+    if (sectionsToAnimate.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sectionsToAnimate.forEach(section => {
+            section.classList.add('hidden');
+            observer.observe(section);
         });
-    }, { threshold: 0.1 });
+    }
 
-    const sectionsToAnimate = document.querySelectorAll('.why-choose-us, .our-process, .testimonials, .final-cta');
-    sectionsToAnimate.forEach(section => {
-        section.classList.add('hidden');
-        observer.observe(section);
-    });
-
-    // Handle Quote Form Submission
+    // --- QUOTE FORM LOGIC ---
     const quoteForm = document.getElementById('quote-form');
     if (quoteForm) {
+        const successModal = document.getElementById('success-modal');
+        const closeButton = document.querySelector('.close-button');
+        const returnButton = document.getElementById('return-home-button');
+        const userEmailSpan = document.getElementById('user-email-span');
+        const fileInput = document.getElementById('photo-upload');
+        const imagePreviewContainer = document.getElementById('photo-previews');
+        const selectFilesBtn = document.querySelector('.btn-gold-full');
+
+        if (closeButton && successModal) {
+            closeButton.addEventListener('click', () => {
+                successModal.style.display = 'none';
+            });
+        }
+
+        // Keep track of selected files
+        let selectedFiles = [];
+        
+        const updateImagePreviews = () => {
+            if (!imagePreviewContainer || !fileInput) return;
+            
+            // Add new files to our selection
+            const newFiles = Array.from(fileInput.files);
+            newFiles.forEach(file => {
+                // Check if we already have this file (by name and size)
+                const isDuplicate = selectedFiles.some(f => 
+                    f.name === file.name && f.size === file.size && f.lastModified === file.lastModified
+                );
+                
+                if (!isDuplicate) {
+                    selectedFiles.push(file);
+                }
+            });
+            
+            // Limit to maximum 3 files
+            if (selectedFiles.length > 3) {
+                selectedFiles = selectedFiles.slice(0, 3);
+                Toastify({
+                    text: "Maximum 3 photos allowed. Only the first 3 will be used.",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "center",
+                    style: { background: "#e74c3c" }
+                }).showToast();
+            }
+            
+            // Clear container and display all selected files
+            imagePreviewContainer.innerHTML = '';
+            
+            selectedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const preview = document.createElement('div');
+                    preview.classList.add('image-preview-item');
+                    preview.innerHTML = `
+                        <div class="thumbnail-container">
+                            <img src="${e.target.result}" alt="${file.name}">
+                            <button type="button" class="remove-image-btn" data-index="${index}">&times;</button>
+                        </div>
+                        <p class="filename">${file.name.length > 15 ? file.name.substring(0, 12) + '...' : file.name}</p>
+                    `;
+                    imagePreviewContainer.appendChild(preview);
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            // Create a new FileList to replace the input's files
+            updateFileInput();
+        };
+        
+        // Update the file input with our selected files
+        const updateFileInput = () => {
+            // We can't directly modify FileList, so we need to create a DataTransfer
+            const dt = new DataTransfer();
+            selectedFiles.forEach(file => dt.items.add(file));
+            fileInput.files = dt.files;
+        };
+
+        // Only add change event listener since the label already triggers the file input
+        if (fileInput) {
+            fileInput.addEventListener('change', updateImagePreviews);
+        }
+        
+        // Add 'Remove' button functionality
+        if (imagePreviewContainer) {
+            imagePreviewContainer.addEventListener('click', (e) => {
+                if (e.target && e.target.classList.contains('remove-image-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    
+                    // Remove the file from our tracking array
+                    selectedFiles = selectedFiles.filter((_, i) => i !== index);
+                    
+                    // Update the previews with our modified array
+                    updateFileInput();
+                    
+                    // Refresh all the previews
+                    imagePreviewContainer.innerHTML = '';
+                    selectedFiles.forEach((file, i) => {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            const preview = document.createElement('div');
+                            preview.classList.add('image-preview-item');
+                            preview.innerHTML = `
+                                <div class="thumbnail-container">
+                                    <img src="${e.target.result}" alt="${file.name}">
+                                    <button type="button" class="remove-image-btn" data-index="${i}">&times;</button>
+                                </div>
+                                <p class="filename">${file.name.length > 15 ? file.name.substring(0, 12) + '...' : file.name}</p>
+                            `;
+                            imagePreviewContainer.appendChild(preview);
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                }
+            });
+        }
+
         quoteForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const form = event.target;
             const submitButton = form.querySelector('button[type="submit"]');
-            const formData = new FormData(form);
-            const imageInput = document.getElementById('images');
-            const files = imageInput.files;
-            const imageUrls = [];
+            const name = document.getElementById('full-name').value.trim();
+            const emailValue = document.getElementById('email').value.trim();
+            const metalType = document.getElementById('metal-type').value;
+
+            if (!name || !emailValue || !metalType) {
+                Toastify({ text: "Please fill out all required fields (Name, Email, Metal Type).", duration: 3000, close: true, gravity: "top", position: "center", style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" } }).showToast();
+                return;
+            }
 
             submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
 
-            // 1. Handle Image Uploads to Cloudinary
-            if (files.length > 0) {
-                submitButton.textContent = 'Uploading Images...';
-                for (const file of files) {
-                    const uploadFormData = new FormData();
-                    uploadFormData.append('file', file);
-                    uploadFormData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-                    uploadFormData.append('folder', 'shawn-gold-standard');
+            try {
+                const imageUrls = [];
+                const cloudName = 'dcuwsbzv5';
+                const uploadPreset = 'shawn-gold-uploads';
+                const imageFiles = fileInput.files;
 
-                    try {
-                        const response = await fetch(CLOUDINARY_URL, {
-                            method: 'POST',
-                            body: uploadFormData,
-                        });
-
-                        if (response.ok) {
-                            const data = await response.json();
-                            imageUrls.push(data.secure_url);
-                        } else {
-                            throw new Error(`Image upload failed: ${response.statusText}`);
-                        }
-                    } catch (error) {
-                        console.error('Image upload failed:', error);
-                        Toastify({
-                            text: "Error uploading images: " + error.message,
-                            duration: 5000,
-                            close: true,
-                            gravity: "top",
-                            position: "right",
-                            style: {
-                                background: "linear-gradient(to right, #ff5f6d, #ffc371)",
-                            },
-                            stopOnFocus: true,
-                        }).showToast();
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Submit for Quote';
-                        return; // Stop the submission process
-                    }
-                }
-            }
-
-            // 2. Submit Form Data to Supabase
-            submitButton.textContent = 'Submitting Quote...';
-            const submission = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                metal_type: formData.get('metal-type'),
-                description: formData.get('description'),
-                image_urls: imageUrls
-            };
-
-            const { data, error } = await _supabase
-                .from('quotes')
-                .insert([submission]);
-
-            if (error) {
-                console.error('Error submitting quote:', error);
-                Toastify({
-                    text: "Error: " + error.message,
-                    duration: 5000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    style: {
-                        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
-                    },
-                    stopOnFocus: true,
-                }).showToast();
-            } else {
-                console.log('Quote submitted successfully:', data);
-
-                // 3. Trigger email notification via serverless function
-                try {
-                    await fetch('/.netlify/functions/send-quote-email', {
-                        method: 'POST',
-                        body: JSON.stringify(submission)
-                    });
-                } catch (emailError) {
-                    console.error('Failed to send email notification:', emailError);
-                    // Don't show an error to the user, just log it for debugging
+                for (const file of imageFiles) {
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    formData.append('upload_preset', uploadPreset);
+                    formData.append('folder', 'shawn-quotes');
+                    const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, { method: 'POST', body: formData });
+                    if (!response.ok) throw new Error('Image upload failed.');
+                    const data = await response.json();
+                    imageUrls.push(data.secure_url);
                 }
 
-                Toastify({
-                    text: "Thanks for reaching out! Shawn will contact you within 24 hours.",
-                    duration: 4000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    style: {
-                        background: "linear-gradient(to right, #00b09b, #96c93d)",
-                    },
-                    stopOnFocus: true,
-                    callback: function() {
-                        window.location.href = "/";
-                    }
-                }).showToast();
-                quoteForm.reset();
-                document.getElementById('image-preview-container').innerHTML = '';
+                const quoteData = {
+                    name,
+                    email: emailValue,
+                    phone: document.getElementById('phone').value,
+                    metalType: metalType,
+                    itemDescription: document.getElementById('item-description').value,
+                    imageUrls: imageUrls
+                };
+
+                if (!_supabase) throw new Error('Supabase client not initialized.');
+                const { error: functionError } = await _supabase.functions.invoke('send-quote-confirmation', { body: quoteData });
+                if (functionError) throw new Error(`Function Error: ${functionError.message}`);
+
+                if (userEmailSpan) userEmailSpan.textContent = emailValue;
+                if (successModal) successModal.style.display = 'flex';
+                if (returnButton) returnButton.addEventListener('click', () => { window.location.href = '/'; });
+                
+                setTimeout(() => { window.location.href = '/'; }, 3000);
+
+                form.reset();
+                if (imagePreviewContainer) imagePreviewContainer.innerHTML = '';
+
+            } catch (error) {
+                console.error('Submission failed:', error);
+                Toastify({ text: `An error occurred: ${error.message}`, duration: 5000, close: true, gravity: "top", position: "center", style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" } }).showToast();
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit for Quote';
             }
-
-            submitButton.disabled = false;
-            submitButton.textContent = 'Submit for Quote';
         });
     }
 
-    // Simple file upload handler
-    const fileInput = document.getElementById('images');
-    const imagePreviewContainer = document.getElementById('image-preview-container');
-    const selectFilesBtn = document.getElementById('select-files-btn');
-    const fileCountDisplay = document.querySelector('.file-count');
-    
-    // Function to update file count display
-    const updateFileCountDisplay = () => {
-        if (!fileInput || !fileCountDisplay) return;
-        
-        const count = fileInput.files.length;
-        if (count === 0) {
-            fileCountDisplay.textContent = 'No files selected';
-        } else if (count === 1) {
-            fileCountDisplay.textContent = '1 file selected';
-        } else {
-            fileCountDisplay.textContent = `${count} files selected`;
-        }
-    };
-    
-    // Function to generate image previews
-    const updateImagePreviews = () => {
-        if (!fileInput || !fileInput.files || !imagePreviewContainer) return;
-        
-        imagePreviewContainer.innerHTML = ''; // Clear existing previews
-        
-        // Update file count first
-        updateFileCountDisplay();
-        
-        // Generate previews
-        Array.from(fileInput.files).forEach(file => {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const preview = document.createElement('div');
-                preview.classList.add('image-preview');
-                
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.alt = file.name;
-                
-                const name = document.createElement('p');
-                name.textContent = file.name;
-                
-                preview.appendChild(img);
-                preview.appendChild(name);
-                imagePreviewContainer.appendChild(preview);
-            };
-            reader.readAsDataURL(file);
-        });
-    };
-    
-    // Add event listener to select files button
-    if (selectFilesBtn) {
-        selectFilesBtn.addEventListener('click', () => {
-            if (fileInput) fileInput.click();
-        });
-    }
-    
-    // Add change event listener to file input
-    if (fileInput) {
-        fileInput.addEventListener('change', updateImagePreviews);
-    }
-
-    // Handle Contact Form Submission
+    // --- CONTACT FORM LOGIC ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', async (event) => {
@@ -319,39 +320,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: formData.get('message'),
             };
 
-            const { data, error } = await _supabase
-                .from('contacts')
-                .insert([submission]);
+            if (!_supabase) {
+                console.error('Supabase client not initialized. Cannot submit contact form.');
+                Toastify({ text: "Error: Could not connect to the server.", duration: 5000, style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" } }).showToast();
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+                return;
+            }
+
+            const { data, error } = await _supabase.from('contacts').insert([submission]);
 
             if (error) {
                 console.error('Error submitting contact form:', error);
-                Toastify({
-                    text: "Error: " + error.message,
-                    duration: 5000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    style: {
-                        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
-                    },
-                    stopOnFocus: true,
-                }).showToast();
+                Toastify({ text: "Error: " + error.message, duration: 5000, close: true, gravity: "top", position: "right", style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" } }).showToast();
             } else {
                 console.log('Contact form submitted successfully:', data);
-                Toastify({
-                    text: "Your message has been sent successfully!",
-                    duration: 3000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    style: {
-                        background: "linear-gradient(to right, #00b09b, #96c93d)",
-                    },
-                    stopOnFocus: true,
-                    callback: function() {
-                        window.location.href = "/";
-                    }
-                }).showToast();
+                Toastify({ text: "Your message has been sent successfully!", duration: 3000, close: true, gravity: "top", position: "right", style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }, callback: () => { window.location.href = "/"; } }).showToast();
                 contactForm.reset();
             }
 
@@ -360,43 +344,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // PWA Install Button Logic
-    let deferredPrompt;
+    // --- PWA INSTALL BUTTON LOGIC ---
     const installBtn = document.getElementById('install-btn');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent the mini-infobar from appearing on mobile
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      deferredPrompt = e;
-      // Update UI to notify the user they can install the PWA
-      if (installBtn) {
-        installBtn.style.display = 'block';
-      }
-    });
-
     if (installBtn) {
-        installBtn.addEventListener('click', async () => {
-        // Hide the app provided install promotion
-        installBtn.style.display = 'none';
-        // Show the install prompt
-        deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response to the install prompt: ${outcome}`);
-        // We've used the prompt, and can't use it again, throw it away
-        deferredPrompt = null;
-      });
-    }
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.style.display = 'block';
+        });
 
-    window.addEventListener('appinstalled', () => {
-      // Hide the app-provided install promotion
-      if (installBtn) {
-        installBtn.style.display = 'none';
-      }
-      // Clear the deferredPrompt so it can be garbage collected
-      deferredPrompt = null;
-      // Optionally, send analytics event to indicate successful install
-      console.log('PWA was installed');
-    });
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                installBtn.style.display = 'none';
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                deferredPrompt = null;
+            }
+        });
+
+        window.addEventListener('appinstalled', () => {
+            installBtn.style.display = 'none';
+            deferredPrompt = null;
+            console.log('PWA was installed');
+        });
+    }
 });
