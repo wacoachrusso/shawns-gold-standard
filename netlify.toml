@@ -23,3 +23,21 @@
 [build.processing.images]
   compress = true
 
+
+# HTTP headers: aggressively disable caching for HTML so new deploys are visible immediately
+[[headers]]
+# Root path (homepage)
+for = "/"
+  [headers.values]
+  Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+  Pragma = "no-cache"
+  Expires = "0"
+
+[[headers]]
+# All HTML documents
+for = "/*.html"
+  [headers.values]
+  Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+  Pragma = "no-cache"
+  Expires = "0"
+
