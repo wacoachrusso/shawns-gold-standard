@@ -1,0 +1,170 @@
+/* CSS for Metal Price Indicators */
+
+/* Up/down price indicator styling */
+.price-up, .price-down {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 0.9em;
+    animation: pulse 0.8s ease-in-out;
+    transition: all 0.3s ease;
+}
+
+.price-up {
+    color: #4caf50; /* Green for price increase */
+}
+
+.price-down {
+    color: #f44336; /* Red for price decrease */
+}
+
+/* Icon styling */
+.price-up i, .price-down i {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Subtle pulse animation when price updates */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Enhanced styling for the metal prices widget */
+.metal-prices-widget {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin: 2rem auto;
+}
+
+.metal-prices-header {
+    padding: 15px 20px;
+    background: linear-gradient(to right, #1f3a63, #0d1b33);
+    border-bottom: 2px solid var(--gold-accent);
+}
+
+.metal-prices-header h3 {
+    color: var(--gold-accent);
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.update-time {
+    font-size: 0.8rem;
+    color: #d1d5db;
+    opacity: 0.8;
+}
+
+.metal-prices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    background-color: #0f1e36;
+}
+
+.metal-price {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+}
+
+.metal-price:hover {
+    background-color: rgba(255,255,255,0.03);
+}
+
+.metal-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(218, 165, 32, 0.1);
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.metal-icon i {
+    color: var(--gold-accent);
+    font-size: 1.2rem;
+}
+
+.metal-info {
+    flex: 1;
+}
+
+.metal-name {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0f4fa;
+    margin-bottom: 5px;
+}
+
+.price {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold-light);
+}
+
+/* Loading animation */
+.metal-prices-loading {
+    padding: 30px;
+    text-align: center;
+}
+
+.spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(218, 165, 32, 0.2);
+    border-radius: 50%;
+    border-top-color: var(--gold-accent);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Error state */
+.metal-prices-error {
+    padding: 20px;
+    text-align: center;
+    color: #d1d5db;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .metal-prices-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .metal-price {
+        padding: 12px 15px;
+    }
+    
+    .metal-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+    }
+    
+    .metal-name {
+        font-size: 0.9rem;
+    }
+    
+    .price {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .metal-prices-grid {
+        grid-template-columns: 1fr;
+    }
+}

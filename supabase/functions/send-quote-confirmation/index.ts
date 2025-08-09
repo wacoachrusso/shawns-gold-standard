@@ -109,14 +109,16 @@ serve(async (req) => {
       </div>
     `;
 
-    // Send email to customer
+    // Send email to customer (BCC owner as backup path)
     const customerEmailResult = await resend.emails.send({
       from: `${COMPANY_NAME} <Admin@shawnsgoldstandard.com>`,
       to: [email],
       reply_to: OWNER_EMAIL,
+      bcc: [OWNER_EMAIL],
       subject: 'Thank You for Your Quote Request!',
       html: customerEmailHtml,
     });
+    console.log('Customer email result:', JSON.stringify(customerEmailResult));
     
     // Send notification email to owner
     const ownerEmailResult = await resend.emails.send({
@@ -125,6 +127,7 @@ serve(async (req) => {
       subject: `New Quote Request from ${name}`,
       html: ownerEmailHtml,
     });
+    console.log('Owner email result:', JSON.stringify(ownerEmailResult));
 
     if (customerEmailResult.error || ownerEmailResult.error) {
       console.error({ 

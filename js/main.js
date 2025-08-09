@@ -335,6 +335,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 Toastify({ text: "Error: " + error.message, duration: 5000, close: true, gravity: "top", position: "right", style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" } }).showToast();
             } else {
                 console.log('Contact form submitted successfully:', data);
+                // Invoke Edge Function to notify owner
+                try {
+                    if (!_supabase) throw new Error('Supabase client not initialized.');
+                    const { error: contactFnError } = await _supabase.functions.invoke('send-contact-notification', { body: submission });
+                    if (contactFnError) {
+                        console.error('Owner contact notification failed:', contactFnError);
+                        Toastify({
+                            text: "Heads up: Your message was saved, but owner notification failed.",
+                            duration: 5000,
+                            close: true,
+                            gravity: "top",
+                            position: "right",
+                            style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" }
+                        }).showToast();
+                    }
+                } catch (fnErr) {
+                    console.error('Invoking contact notification failed:', fnErr);
+                    Toastify({
+                        text: "Heads up: Your message was saved, but sending notification failed.",
+                        duration: 5000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" }
+                    }).showToast();
+                }
+
                 Toastify({ text: "Your message has been sent successfully!", duration: 3000, close: true, gravity: "top", position: "right", style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }, callback: () => { window.location.href = "/"; } }).showToast();
                 contactForm.reset();
             }

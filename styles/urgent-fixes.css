@@ -1,0 +1,181 @@
+/* URGENT FIXES FOR CRITICAL SITE ISSUES */
+
+/* ===== NAVIGATION BAR FIXES ===== */
+header {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+}
+
+.navbar {
+    background: linear-gradient(to right, rgba(15, 30, 54, 0.98), rgba(13, 27, 51, 0.98));
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    padding: 0.75rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* ===== CONTENT SPACING FIXES TO PREVENT OVERLAP ===== */
+main {
+    /* No top offset here; let the hero handle spacing so its background fills the gap */
+    padding-top: 0;
+    margin-top: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.hero {
+    /* Add top padding equal to navbar height so the hero background fills the area */
+    padding-top: 80px;
+    margin-top: 0;
+}
+
+.hero-content {
+    padding-top: 0;
+}
+
+/* Improved spacing between sections */
+section {
+    padding: 3rem 0;
+    position: relative;
+    z-index: 10;
+    overflow: visible;
+}
+
+/* Force metal prices visibility */
+.metal-prices-section {
+    display: block !important;
+    visibility: visible !important;
+    /* Remove white background from earlier styles */
+    background: transparent !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    padding: 10px 0 !important;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 20;
+}
+
+#metal-prices-container {
+    display: block !important;
+    visibility: visible !important;
+    min-height: 200px;
+}
+
+/* Ensure widget appears on mobile too */
+@media (max-width: 768px) {
+    main {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    
+    .hero {
+        padding-top: 72px; /* approx navbar height on mobile */
+        margin-top: 0;
+    }
+    
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    
+    #metal-prices-container {
+        min-height: 250px;
+    }
+}
+
+/* Fix hamburger menu on mobile */
+@media (max-width: 991px) {
+    .hamburger {
+        display: block !important;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to bottom, rgba(15, 30, 54, 0.98), rgba(13, 27, 51, 0.98));
+        padding: 1rem 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+    
+    .nav-links.active {
+        max-height: 500px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-links ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-links ul li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links ul li a {
+        display: block;
+        padding: 1rem;
+        width: 100%;
+    }
+}
+
+/* Fix hamburger and button overlap */
+@media (max-width: 768px) {
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .nav-actions .btn-primary {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* Ensure proper display on desktop */
+@media (min-width: 992px) {
+    .hamburger {
+        display: none !important;
+    }
+    
+    .nav-links {
+        display: flex !important;
+    }
+    
+    .nav-links ul {
+        display: flex;
+    }
+}
+
+/* ===== WIDGET STYLES REINFORCEMENT ===== */
+.metal-prices-widget {
+    display: block !important;
+    visibility: visible !important;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Force certain colors for better visibility */
+.metal-price {
+    background-color: rgba(15, 30, 54, 0.95) !important;
+    border: 1px solid rgba(218, 165, 32, 0.2) !important;
+}
+
+.metal-name {
+    color: #f0f4fa !important;
+}
+
+.price {
+    color: var(--gold-accent) !important;
+}

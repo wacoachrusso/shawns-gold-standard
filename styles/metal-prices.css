@@ -75,14 +75,16 @@
 }
 
 .metal-name {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     margin-bottom: 4px;
+    color: rgba(255,255,255,0.95);
 }
 
 .price {
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 800;
+    color: #ffffff;
 }
 
 .gold .metal-icon, .gold .price {

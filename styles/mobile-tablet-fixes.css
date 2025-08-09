@@ -1,0 +1,177 @@
+/* Mobile and Tablet Layout Fixes
+   Addresses spacing and overlapping issues on smaller screens */
+
+/* Global spacing adjustments for mobile/tablet */
+@media (max-width: 991px) {
+    section {
+        padding: 50px 0; /* Reduce vertical padding on sections */
+    }
+    
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    h1, h2, h3 {
+        margin-bottom: 15px; /* Reduce heading margins */
+    }
+    
+    p {
+        margin-bottom: 15px; /* Reduce paragraph margins */
+    }
+    
+    /* Fix for flexbox items bunching together */
+    .row, .flex-container {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    
+    [class*="col-"], .flex-item {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 20px; /* Add bottom spacing between stacked columns */
+    }
+}
+
+/* Specific mobile fixes (small phones) */
+@media (max-width: 576px) {
+    /* Prevent text overflow */
+    h1 {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+    
+    h2 {
+        font-size: 24px;
+        line-height: 1.3;
+    }
+    
+    /* Buttons adjustments */
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        margin: 5px; /* Add space between stacked buttons */
+        white-space: normal; /* Allow text to wrap */
+    }
+    
+    /* Fix for closely packed buttons */
+    .cta-buttons, .action-buttons, .testimonial-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .cta-buttons .btn, .action-buttons .btn, .testimonial-cta .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    /* Process section fixes */
+    .process-step {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    /* Fix for stacked testimonials */
+    .testimonial-card {
+        padding: 15px;
+    }
+    
+    /* Testimonial summary stats spacing */
+    .summary-stat {
+        padding: 10px;
+        min-width: 90px;
+    }
+}
+
+/* Tablet-specific fixes */
+@media (min-width: 577px) and (max-width: 991px) {
+    /* Prevent navbar items from crowding */
+    .navbar .logo {
+        max-width: 200px;
+    }
+    
+    /* Process section layout */
+    .process-step {
+        padding: 20px;
+    }
+    
+    /* Buttons on tablet */
+    .cta-buttons .btn, .action-buttons .btn {
+        padding: 10px 20px;
+    }
+    
+    /* Testimonial summary stat spacing */
+    .testimonial-summary {
+        justify-content: space-around;
+    }
+    
+    .summary-stat {
+        padding: 15px;
+    }
+}
+
+/* Fix hamburger menu and 'Get a Quote' button overlap in navbar */
+@media (max-width: 991px) {
+    .navbar {
+        padding: 10px 15px; /* Ensure consistent padding */
+    }
+    
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+    
+    .btn-primary {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    /* Ensure button doesn't wrap */
+    .nav-actions .btn {
+        white-space: nowrap;
+    }
+    
+    /* Hamburger button positioning */
+    .hamburger {
+        margin-left: 5px;
+        padding: 5px;
+    }
+    
+    /* When menu is expanded */
+    .nav-links.show {
+        padding-top: 15px; /* Add space at top of expanded menu */
+        z-index: 1000;
+    }
+}
+
+/* Enhancement for footer on mobile */
+@media (max-width: 767px) {
+    .footer-content {
+        gap: 2rem; /* Reduce gap slightly */
+    }
+    
+    .footer-nav-group {
+        min-width: 100%; /* Full width on mobile */
+        text-align: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .footer-logo-img {
+        margin: 0 auto 1rem; /* Center logo */
+    }
+}
+
+/* Enhanced spacing for benefits/features section on mobile */
+@media (max-width: 767px) {
+    .benefits-container .benefit-card,
+    .features-grid .feature-card {
+        margin-bottom: 25px; /* Increase spacing between stacked cards */
+        padding: 20px;
+    }
+}
